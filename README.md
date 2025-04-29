@@ -32,13 +32,15 @@ I aspire to work in the field of **computer programming**, **electronics program
 
 ## 💻 IT Skills
 
-
 | **Programming** | **Level** | **Web Development** | **Level** | **Additional Skills** | **Level** | **Frameworks** | **Level** | **OSs** |
 |-----------------|-----------|---------------------|-----------|-----------------------|-----------|----------------|-----------|---------|
-| ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) | Good | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) | Excellent | ![SQL](https://img.shields.io/badge/SQL-003B57?style=for-the-badge&logo=postgresql&logoColor=white) | Good | ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white) | Beginner | ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) | Excellent |
-| ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) | Excellent | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | Good |  ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) | Good | ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white) | Beginner | ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) | Excellent |
-| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | Good | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | Excellent | ![Server Management](https://img.shields.io/badge/Server_Management-555555?style=for-the-badge&logo=server&logoColor=white) | Excellent | ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white) | Beginner | ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white) |
-| - | - | - | - | - | - | - | - | - |
+| ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) | Excellent | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) | Excellent | ![SQL](https://img.shields.io/badge/SQL-003B57?style=for-the-badge&logo=postgresql&logoColor=white) | Excellent | ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white) | Beginner | ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) |
+| ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) | Excellent | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | Good | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) | Good | ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white) | Beginner | ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) |
+| ![Perl](https://img.shields.io/badge/Perl-39457E?style=for-the-badge&logo=perl&logoColor=white) | Good | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | Excellent | ![Server Management](https://img.shields.io/badge/Server_Management-555555?style=for-the-badge&logo=server&logoColor=white) | Excellent | ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white) | Beginner | ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white) |
+| ![Shell Script](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white) | Good | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) | Good |  |  |  |  |  |
+| ![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white) | Beginner |  |  |  |  |  |  |  |
+| ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white) | Beginner |  |  |  |  |  |  |  |
+
 
 ---
 
@@ -49,23 +51,21 @@ I aspire to work in the field of **computer programming**, **electronics program
 
 ---
 
-## 🌙 Dark Mode Hint (for GitHub)
-
-> *If you're using GitHub's dark mode, this README will look great! The background is dark, and the badges are bright and visible.*  
-> **Tip**: If you want to enable **dark mode** on GitHub, simply go to your GitHub settings > Appearance > Dark mode!
-
----
 
 ## 📈 GitHub Stats
 
 ![Jan-Erik Labbas' GitHub stats](https://github-readme-stats.vercel.app/api?username=jamps3&show_icons=true&hide_title=true&count_private=true&hide=prs&theme=radical)
 
+### 🌙 Dark Mode Hint (for GitHub)
+> *If you're using GitHub's dark mode, this README will look great! The background is dark, and the badges are bright and visible.*  
+> **Tip**: If you want to enable **dark mode** on GitHub, simply go to your GitHub settings > Appearance > Dark mode!
+
 ---
 
 ## 📚 Contact Me
 
-Feel free to reach out to me via [email](mailto:jamps3@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/).
-
+Feel free to reach out to me via [email](mailto:jamps3@gmail.com) [<img src="https://github.com/jamps3/cv/blob/main/img/1200px-Gmail.webp" width="30px">](mailto:jamps3@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/)
+<a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/"><img src="https://github.com/jamps3/cv/blob/main/img/LinkedIn.ico" width="30px"></a>
 ---
 
 > "I look forward to collaborating on exciting projects and learning more in the tech space!" - **Jan-Erik Labbas**
