@@ -1,10 +1,50 @@
-# Jan-Erik Labbas
+# CV - Jan-Erik Labbas
 
-[![Profile Picture](https://github.com/jamps3/cv/blob/main/cv-profile.png)](https://github.com/jamps3)  
-📧 **Email**: [jamps3@gmail.com](mailto:jamps3@gmail.com)  
-📍 **Location**: Viljatie 2, Finland  
-🔗 **LinkedIn**: [jan-erik-labbas-2a5398b6](https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/)  
-📱 **Phone**: +358 44 535 0022  
+<table>
+  <tr>
+    <td>
+      <a href="https://github.com/jamps3"><img src="https://github.com/jamps3/cv/blob/main/cv-profile.png" width="200"></a>
+    </td>
+    <td>
+      <h2>📧 Email: <a href="mailto:jamps3@gmail.com">jamps3@gmail.com</a></h2>
+      <h2>📱 Phone: +358 44 535 0022</h2>
+      <h2>📍 Location: Viljatie 2, 80510 Onttola, Finland</h2>
+      <h2>🔗 LinkedIn: <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/">jan-erik-labbas</a></h2>
+    </td>
+    <td>
+      <table style="border-collapse: collapse; width: 100%;">
+        <thead>
+          <tr>
+            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Language</th>
+            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px;">Finnish</td>
+            <td style="padding: 8px;"><span style="color:green;">████</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">English</td>
+            <td style="padding: 8px;"><span style="color:green;">████</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Swedish</td>
+            <td style="padding: 8px;"><span style="color:yellow;">██░░</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Deutsch</td>
+            <td style="padding: 8px;"><span style="color:yellow;">██░░</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Sign language</td>
+            <td style="padding: 8px;"><span style="color:orange;">█░░░</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -18,15 +58,16 @@ I aspire to work in the field of **computer programming**, **electronics program
 
 ## 🎓 Education
 
-| **Education** | **Years**      | **Details** | **Language** | **Level** |
-|---------------|----------------|-------------|--------------|-----------|
-| **Code Academy course** | 2022–2023 | | Finnish | ████ |
-| **Seeds for the Future – Huawei** | 2021 | | English | ████ |
-| **Master's studies, UEF** | 2017–2019 | | Swedish | ██░░ |
-| **Bachelor's degree, UEF** | 2005–2019 | **Major**: Computer Science, **Minors**: Chemistry & Biology | Deutsch | ██░░ |
-| | | **Bachelor's thesis**: Choosing a file system for Linux | Sign language | █░░░ |
-| **Entrepreneurship course** | 2013 | | | |
-| **Matriculation exam** | 2005 | | | |
+| **Education** | **Years** | **Details** |
+|---------------|-----------|-------------|
+| **Ohjelmoinnistako minulle ammatti? course** | 2025–2026 | |
+| **Code Academy course** | 2022–2023 | |
+| **Seeds for the Future course – Huawei** | 2021 | |
+| **Master's studies, UEF** | 2017–2019 | |
+| **Bachelor's degree, UEF** | 2005–2019 | **Major**: Computer Science, **Minors**: Chemistry & Biology |
+| | | **Bachelor's thesis**: Choosing a file system for Linux |
+| **Entrepreneurship course** | 2013 | |
+| **Matriculation exam** | 2005 | |
 
 ---
 
@@ -66,8 +107,8 @@ I aspire to work in the field of **computer programming**, **electronics program
 
 | **Position**                            | **Company**                        | **Dates**         | **Details**                                                                                       |
 |-----------------------------------------|------------------------------------|-------------------|---------------------------------------------------------------------------------------------------|
+| Electronics Specialist / Programmer     | Hypernova Oy, Joensuu              | 02/2019 – 2024    | Built, repaired, installed, and developed Toveri access control devices. Worked with soldering, PCB design, FreeCAD, and Linux tools. Diagnosed and repaired issues. |
 | Software Developer Trainee              | Keypro Oy, Joensuu                 | 11/2022 - 05/2023 | Worked with large Python/Django environment. Implemented new REST API functionality. Fixed code.  |
-| Electronics Specialist / Programmer     | Hypernova Oy, Joensuu              | 02/2019 – 2023    | Built, repaired, installed, and developed Toveri access control devices. Worked with soldering, PCB design, FreeCAD, and Linux tools. Diagnosed and repaired issues. |
 | Programmer Trainee / Junior Programmer | European Forest Institute (EFI)    | 06/2011 – 08/2011, 06/2014 – 11/2014 | Improved error reporting and fixed bugs in ToSia (forest growth simulation). Developed an intranet portal using MS SharePoint. |
 | Website Expert                          | Technoreactor Oy & IQlink Oy, Joensuu | 02/2012 – 09/2012 | Managed ICT, developed websites for the company and its projects.                                |
 | Service Desk                            | Joensuu Campus Library, Joensuu    | 01/2006 – 05/2009 | Assisted customers with various problems (office tools, printing, general inquiries). All problems were solved. |
@@ -107,6 +148,3 @@ Feel free to reach out to me via [email](mailto:jamps3@gmail.com) [<img src="htt
 > "I look forward to collaborating on exciting projects and learning more in the tech space!" - **Jan-Erik Labbas**
 
 ---
-
-
-# 👉 [View full CV](https://yourusername.github.io/yourrepo/cv.html)
