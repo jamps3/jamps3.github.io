@@ -3,7 +3,7 @@
 <table>
   <tr>
     <td>
-      <a href="https://github.com/jamps3"><img src="https://github.com/jamps3/cv/blob/main/cv-profile.png" width="200"></a>
+      <a href="https://github.com/jamps3"><img src="https://github.com/jamps3/cv/blob/main/img/cv-profile.png" width="200"></a>
     </td>
     <td>
       <h2>📧 Email: <a href="mailto:jamps3@gmail.com">jamps3@gmail.com</a></h2>
