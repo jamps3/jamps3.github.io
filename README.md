@@ -47,7 +47,6 @@ I aspire to work in the field of **computer programming**, **electronics program
 | ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) | █████ |
 | ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white) | ███░░ |
 
-
 ---
 
 ## 🛠️ Projects and Contributions
@@ -57,14 +56,9 @@ I aspire to work in the field of **computer programming**, **electronics program
 
 ---
 
-
 ## 📈 GitHub Stats
 
 ![Jan-Erik Labbas' GitHub stats](https://github-readme-stats.vercel.app/api?username=jamps3&show_icons=true&hide_title=true&count_private=true&hide=prs&theme=radical)
-
-### 🌙 Dark Mode Hint (for GitHub)
-> *If you're using GitHub's dark mode, this README will look great! The background is dark, and the badges are bright and visible.*  
-> **Tip**: If you want to enable **dark mode** on GitHub, simply go to your GitHub settings > Appearance > Dark mode!
 
 ---
 
@@ -82,22 +76,25 @@ I aspire to work in the field of **computer programming**, **electronics program
 
 ## Hobbies and Interests
 
-| **Interest**                                    |
+| **Item**                                         | 
 |-------------------------------------------------|
-| Electronics (building, repairing, programming)  |
-| Computers and technology                        |
-| Music, cycling, board games, and computer games |
-| Nature, plants and wellbeing                    |
+| 🔧 ![Electronics](https://img.shields.io/badge/🔧_Electronics-4A90E2?style=for-the-badge&logo=arduino&logoColor=white) Electronics (Building, Soldering, Repairing, Programming) |
+| 🖥️ ![Computers](https://img.shields.io/badge/🖥️_Computers-57A1F8?style=for-the-badge&logo=computer&logoColor=white) Computers and technology |
+| 🎵 ![Music](https://img.shields.io/badge/🎵_Music-FF0066?style=for-the-badge&logo=music&logoColor=white) Music (Listening, DJing, Producing)|
+| 🎲 ![Games](https://img.shields.io/badge/🎲_Games-9B59B6?style=for-the-badge&logo=joystick&logoColor=white) Board and computer games |
+| 🌿 ![Nature](https://img.shields.io/badge/🌿_Nature-2ECC71?style=for-the-badge&logo=leaf&logoColor=white) Nature, plants, wellbeing, and cycling |
 
 ---
 
 ## Additional Information
 
-| **Item**                     | **Details**                           |
-|------------------------------|---------------------------------------|
-| Class B Driver’s License     | Car available                         |
-| Turvasuojaaja Card           | Expired                               |
-| Army Service                 | Service: 2004 - 2005, Rank: Korpraali |
+| **Item**                            | **Details**                           |
+|-------------------------------------|---------------------------------------|
+| ![Class B Driver's License](https://img.shields.io/badge/Class_B_Driver%27s_License-0078D6?style=for-the-badge) | ![Available](https://img.shields.io/badge/Car-Available-0078D6?style=for-the-badge) |
+| ![Turvasuojaaja ![Card](https://img.shields.io/badge/Turvasuojaaja_Card-28A745?style=for-the-badge)](https://img.shields.io/badge/Turvasuojaaja_Card-28A745?style=for-the-badge)  | ![Expired](https://img.shields.io/badge/Expired-F00?style=for-the-badge) |
+| ![Army Service](https://img.shields.io/badge/Army_Service-0078D6?style=for-the-badge) | ![2004-2005](https://img.shields.io/badge/2004--2005-0078D6?style=for-the-badge) ![Korpraali](https://img.shields.io/badge/Korpraali-FFD700?style=for-the-badge) |
+
+
 
 ---
 
