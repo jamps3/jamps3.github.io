@@ -53,6 +53,46 @@ img {
 .profile-table td {
   vertical-align: top;
 }
+/* Lomakekenttien tyylit */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+/* Kenttien tyylit */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Varmistaa, että padding ei vaikuta leveyteen */
+}
+textarea {
+    width: 400px; /* Määritellään leveys 400px */
+    height: 150px; /* Voit määrittää korkeuden tarpeen mukaan */
+}
+/* Lähetä-painikkeen tyylit */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #45a049;
+}
 .theme-toggle {
   position: fixed;
   top: 20px;
