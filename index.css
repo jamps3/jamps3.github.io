@@ -24,8 +24,6 @@ a:hover {
   text-decoration: underline;
 }
 section {
-  display: flex;
-  flex-wrap: wrap; /* Taulukot menevät seuraavalle riville, jos tila loppuu */
   justify-content: center; /* Keskittää taulukot */
   gap: 20px; /* Lisää väliä taulukoiden väliin */
 }
@@ -34,6 +32,8 @@ table {
   margin: 20px 0;
   width: 100%; /* Taulukot vievät koko käytettävissä olevan tilan */
   max-width: 800px; /* Ensimmäisen taulukon maksimileveys */
+  display: flex;
+  flex-wrap: wrap; /* Taulukot menevät seuraavalle riville, jos tila loppuu */
 }
 table:nth-of-type(2) {
   max-width: 400px; /* Toisen taulukon maksimileveys */
