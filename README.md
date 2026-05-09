@@ -59,6 +59,7 @@ I am interested in **software development**, **automation**, **electronics-relat
 | Java | Good working knowledge |
 | Bash | Intermediate |
 | Kotlin | Intermediate |
+| PHP | Intermediate |
 | Perl | Basic / legacy experience |
 | C++ | Basic |
 
