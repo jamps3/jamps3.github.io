@@ -1,433 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="CV of Jan-Erik Labbas — Python, web, Linux, electronics and ICT professional based in Joensuu, Finland."
+  />
   <title>CV - Jan-Erik Labbas</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #1e1e1e;
-      color: #ffffff;
-      transition: all 0.3s ease;
-    }
-    body.light-theme {
-      background-color: #ffffff;
-      color: #333333;
-    }
-    h1, h2, h3 {
-      color: #ffffff;
-    }
-    body.light-theme h1, body.light-theme h2, body.light-theme h3 {
-      color: #333333;
-    }
-    a {
-      color: #1e90ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #444444;
-    }
-    body.light-theme th, body.light-theme td {
-      border-bottom: 1px solid #dddddd;
-    }
-    th {
-      background-color: #333333;
-    }
-    body.light-theme th {
-      background-color: #f4f4f4;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    .profile-table {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .profile-table td {
-      vertical-align: top;
-    }
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background-color: #1e90ff;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .theme-toggle:hover {
-      background-color: #007bff;
-    }
-    @media (max-width: 768px) {
-      .profile-table td {
-        display: block;
-        width: 100%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <div class="page-actions" aria-label="Page actions">
+    <button class="action-button" type="button" onclick="toggleTheme()">
+      Toggle Theme
+    </button>
+    <button class="action-button secondary" type="button" onclick="window.print()">
+      Print / PDF
+    </button>
+  </div>
 
-  <header>
-    <h1>CV - Jan-Erik Labbas</h1>
-  </header>
+  <main class="cv-container">
+    <header class="hero">
+      <div class="profile">
+        <a href="https://github.com/jamps3" aria-label="Open Jan-Erik Labbas GitHub profile">
+          <img
+            class="profile-image"
+            src="https://raw.githubusercontent.com/jamps3/cv/main/img/cv-profile.png"
+            width="180"
+            height="180"
+            alt="Portrait of Jan-Erik Labbas"
+          />
+        </a>
 
-  <section>
-    <table class="profile-table">
-      <tr>
-        <td>
-          <a href="https://github.com/jamps3">
-            <img src="https://raw.githubusercontent.com/jamps3/cv/main/img/cv-profile.png" width="200" alt="Profile Picture">
-          </a>
-        </td>
-        <td>
-          <h2>📧 Email: <a href="mailto:jamps3@gmail.com">jamps3@gmail.com</a></h2>
-          <h2>📱 Phone: +358 44 535 0022</h2>
-          <h2>📍 Location: Viljatie 2, 80510 Onttola, Finland</h2>
-          <h2>🔗 LinkedIn: <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/">jan-erik-labbas</a></h2>
-        </td>
-        <td>
-          <table style="border-collapse: collapse; width: 100%;">
-            <thead>
-              <tr>
-                <th style="text-align: left; padding: 8px; border-bottom: 1px solid #444444;">Language</th>
-                <th style="text-align: left; padding: 8px; border-bottom: 1px solid #444444;">Level</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="padding: 8px;">Finnish</td>
-                <td style="padding: 8px;"><span style="color:green;">████</span></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px;">English</td>
-                <td style="padding: 8px;"><span style="color:green;">████</span></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px;">Swedish</td>
-                <td style="padding: 8px;"><span style="color:yellow;">██░░</span></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px;">Deutsch</td>
-                <td style="padding: 8px;"><span style="color:yellow;">██░░</span></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px;">Sign language</td>
-                <td style="padding: 8px;"><span style="color:orange;">█░░░</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </section>
+        <div class="profile-main">
+          <p class="eyebrow">Curriculum Vitae</p>
+          <h1>Jan-Erik Labbas</h1>
+          <p class="subtitle">
+            Python / Web / Linux Developer with electronics and customer-service background
+          </p>
 
-  <section>
-    <h2>🎯 Goals and Skills</h2>
-    <p>I am <strong>social, detail-oriented</strong>, and <strong>responsible</strong>. I enjoy working in teams but also thrive when working independently. I focus on delivering high-quality results and possess strong skills in <strong>customer service</strong>. I speak and write fluent <strong>English</strong> and <strong>Finnish</strong>.</p>
-    <p>I aspire to work in the field of <strong>computer programming</strong>, <strong>electronics programming</strong>, and <strong>web development</strong> (from front-end to back-end). I am passionate about all things related to <strong>ICT</strong>, and I actively keep up with the latest trends and technologies.</p>
-  </section>
+          <ul class="contact-list" aria-label="Contact information">
+            <li>
+              <span class="contact-label">Email</span>
+              <a href="mailto:jamps3@gmail.com">jamps3@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact-label">Phone</span>
+              <a href="tel:+358445350022">+358 44 535 0022</a>
+            </li>
+            <li>
+              <span class="contact-label">Location</span>
+              Joensuu / Onttola, Finland
+            </li>
+            <li>
+              <span class="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/">
+                jan-erik-labbas
+              </a>
+            </li>
+            <li>
+              <span class="contact-label">GitHub</span>
+              <a href="https://github.com/jamps3">github.com/jamps3</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
-  <section>
-    <h2>🎓 Education</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Education</th>
-          <th>Years</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Ohjelmoinnistako minulle ammatti? course</td>
-          <td>2025–2026</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Code Academy course</td>
-          <td>2022–2023</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Seeds for the Future course – Huawei</td>
-          <td>2021</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Master's studies, UEF</td>
-          <td>2017–2019</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Bachelor's degree, UEF</td>
-          <td>2005–2019</td>
-          <td><strong>Major</strong>: Computer Science, <strong>Minors</strong>: Chemistry & Biology</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td><strong>Bachelor's thesis</strong>: Choosing a file system for Linux</td>
-        </tr>
-        <tr>
-          <td>Entrepreneurship course</td>
-          <td>2013</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Matriculation exam</td>
-          <td>2005</td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <section class="section">
+      <h2>Professional Summary</h2>
+      <p>
+        Practical and detail-oriented ICT professional with experience in Python, Linux,
+        web development, electronics repair, access control devices, customer support,
+        and technical troubleshooting. Interested in software development, automation,
+        embedded/electronics-related programming, and full-stack web development.
+      </p>
+      <p>
+        I enjoy both independent technical problem solving and teamwork. I value
+        clear communication, responsibility, practical results, and continuous learning.
+      </p>
+    </section>
 
-<section>
-  <h2>💻 IT Skills</h2>
-  <table style="max-width: 800px; margin: 0 auto;">
-    <thead>
-      <tr>
-        <th>Programming</th>
-        <th>Level</th>
-        <th>Web Development</th>
-        <th>Level</th>
-        <th>Additional Skills</th>
-        <th>Level</th>
-        <th>Frameworks</th>
-        <th>Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></td>
-        <td><span style="color:green;">█████</span></td>
-        <td><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"></td>
-        <td><span style="color:green;">█████</span></td>
-        <td><img src="https://img.shields.io/badge/SQL-003B57?style=for-the-badge&logo=postgresql&logoColor=white" alt="SQL"></td>
-        <td><span style="color:green;">█████</span></td>
-        <td><img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django"></td>
-        <td><span style="color:orange;">█░░░░</span></td>
-      </tr>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java"></td>
-        <td><span style="color:green;">█████</span></td>
-        <td><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"></td>
-        <td><span style="color:green;">█████</span></td>
-        <td><img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"></td>
-        <td><span style="color:yellow;">████░</span></td>
-        <td><img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white" alt="Vue.js"></td>
-        <td><span style="color:orange;">█░░░░</span></td>
-      </tr>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Shell Script"></td>
-        <td><span style="color:yellow;">███░░</span></td>
-        <td><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"></td>
-        <td><span style="color:yellow;">███░░</span></td>
-        <td><img src="https://img.shields.io/badge/Servers-555555?style=for-the-badge&logo=server&logoColor=white" alt="Servers"></td>
-        <td><span style="color:green;">█████</span></td>
-        <td><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"></td>
-        <td><span style="color:orange;">███░░</span></td>
-      </tr>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Perl-39457E?style=for-the-badge&logo=perl&logoColor=white" alt="Perl"></td>
-        <td><span style="color:orange;">██░░░</span></td>
-        <td><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"></td>
-        <td><span style="color:yellow;">███░░</span></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin"></td>
-        <td><span style="color:orange;">███░░</span></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++"></td>
-        <td><span style="color:orange;">██░░░</span></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <table style="max-width: 400px; margin: 0 auto;">
-    <thead>
-      <tr>
-        <th>OS</th>
-        <th>Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"></td>
-        <td><span style="color:green;">█████</span></td>
-      </tr>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"></td>
-        <td><span style="color:green;">█████</span></td>
-      </tr>
-      <tr>
-        <td><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"></td>
-        <td><span style="color:yellow;">███░░</span></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+    <section class="section">
+      <h2>Key Strengths</h2>
+      <ul class="clean-list">
+        <li>Python programming, automation, scripting, backend development, and GUI applications</li>
+        <li>Strong practical Linux and Windows troubleshooting experience</li>
+        <li>Electronics repair, soldering, device installation, and hardware diagnostics</li>
+        <li>Web development with HTML, CSS, JavaScript, TypeScript, SQL, and backend technologies</li>
+        <li>Customer-service background with clear communication and problem-solving skills</li>
+        <li>Interest in full-stack development, embedded systems, accessibility, and practical ICT tools</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>🛠️ Projects and Contributions</h2>
-    <ul>
-      <li>Currently working on several open-source projects, including a <strong>cross-platform file manager</strong> and <strong>SVG-based clock</strong> with multiple modes.</li>
-      <li>Actively contributing to various <strong>ICT-related communities</strong> on GitHub and StackOverflow.</li>
-    </ul>
-  </section>
+    <section class="section">
+      <h2>Technical Skills</h2>
 
-  <section>
-    <h2>📈 GitHub Stats</h2>
-    <img src="https://github-readme-stats.vercel.app/api?username=jamps3&show_icons=true&hide_title=true&count_private=true&hide=prs&theme=radical" alt="GitHub Stats">
-  </section>
+      <div class="skill-groups">
+        <article class="skill-group">
+          <h3>Programming</h3>
+          <div class="skills">
+            <span class="skill advanced">Python — Advanced</span>
+            <span class="skill strong">Java — Good working knowledge</span>
+            <span class="skill intermediate">Bash — Intermediate</span>
+            <span class="skill intermediate">Kotlin — Intermediate</span>
+            <span class="skill basic">Perl — Basic / legacy experience</span>
+            <span class="skill basic">C++ — Basic</span>
+          </div>
+        </article>
 
-  <section>
-    <h2>Work Experience</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Company</th>
-          <th>Dates</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Electronics Specialist / Programmer</td>
-          <td>Hypernova Oy, Joensuu</td>
-          <td>02/2019 – 2024</td>
-          <td>Built, repaired, installed, and developed Toveri access control devices. Worked with soldering, PCB design, FreeCAD, and Linux tools. Diagnosed and repaired issues.</td>
-        </tr>
-        <tr>
-          <td>Software Developer Trainee</td>
-          <td>Keypro Oy, Joensuu</td>
-          <td>11/2022 - 05/2023</td>
-          <td>Worked with large Python/Django environment. Implemented new REST API functionality. Fixed code.</td>
-        </tr>
-        <tr>
-          <td>Programmer Trainee / Junior Programmer</td>
-          <td>European Forest Institute (EFI)</td>
-          <td>06/2011 – 08/2011, 06/2014 – 11/2014</td>
-          <td>Improved error reporting and fixed bugs in ToSia (forest growth simulation). Developed an intranet portal using MS SharePoint.</td>
-        </tr>
-        <tr>
-          <td>Website Expert</td>
-          <td>Technoreactor Oy & IQlink Oy, Joensuu</td>
-          <td>02/2012 – 09/2012</td>
-          <td>Managed ICT, developed websites for the company and its projects.</td>
-        </tr>
-        <tr>
-          <td>Service Desk</td>
-          <td>Joensuu Campus Library, Joensuu</td>
-          <td>01/2006 – 05/2009</td>
-          <td>Assisted customers with various problems (office tools, printing, general inquiries). All problems were solved.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+        <article class="skill-group">
+          <h3>Web Development</h3>
+          <div class="skills">
+            <span class="skill advanced">HTML — Advanced</span>
+            <span class="skill advanced">CSS — Advanced</span>
+            <span class="skill intermediate">JavaScript — Intermediate</span>
+            <span class="skill intermediate">TypeScript — Intermediate</span>
+            <span class="skill strong">SQL — Good working knowledge</span>
+          </div>
+        </article>
 
-  <section>
-    <h2>Hobbies and Interests</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><img src="https://img.shields.io/badge/🔧_Electronics-4A90E2?style=for-the-badge&logo=arduino&logoColor=white" alt="Electronics"> Electronics (Building, Soldering, Repairing, Programming)</td>
-        </tr>
-        <tr>
-          <td><img src="https://img.shields.io/badge/🖥️_Computers-57A1F8?style=for-the-badge&logo=computer&logoColor=white" alt="Computers"> Computers and technology</td>
-        </tr>
-        <tr>
-          <td><img src="https://img.shields.io/badge/🎵_Music-FF0066?style=for-the-badge&logo=music&logoColor=white" alt="Music"> Music (Listening, DJing, Producing)</td>
-        </tr>
-        <tr>
-          <td><img src="https://img.shields.io/badge/🎲_Games-9B59B6?style=for-the-badge&logo=joystick&logoColor=white" alt="Games"> Board and computer games</td>
-        </tr>
-        <tr>
-          <td><img src="https://img.shields.io/badge/🌿_Nature-2ECC71?style=for-the-badge&logo=leaf&logoColor=white" alt="Nature"> Nature, plants, wellbeing, and cycling</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+        <article class="skill-group">
+          <h3>Frameworks and Tools</h3>
+          <div class="skills">
+            <span class="skill intermediate">Git — Intermediate</span>
+            <span class="skill intermediate">PyQt / GUI development</span>
+            <span class="skill basic">Django — Basic / trainee experience</span>
+            <span class="skill basic">Vue.js — Basic</span>
+            <span class="skill intermediate">Android development — Intermediate basics</span>
+            <span class="skill strong">FreeCAD / technical design</span>
+            <span class="skill strong">Tkinter / desktop GUI development</span>
+          </div>
+        </article>
 
-  <section>
-    <h2>Additional Information</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><img src="https://img.shields.io/badge/Class_B_Driver%27s_License-0078D6?style=for-the-badge" alt="Class B Driver's License"></td>
-          <td><img src="https://img.shields.io/badge/Car-Available-0078D6?style=for-the-badge" alt="Car Available"></td>
-        </tr>
-        <tr>
-          <td><img src="https://img.shields.io/badge/Turvasuojaaja_Card-28A745?style=for-the-badge" alt="Turvasuojaaja Card"></td>
-          <td><img src="https://img.shields.io/badge/Expired-F00?style=for-the-badge" alt="Expired"></td>
-        </tr>
-        <tr>
-          <td><img src="https://img.shields.io/badge/Army_Service-0078D6?style=for-the-badge" alt="Army Service"></td>
-          <td><img src="https://img.shields.io/badge/2004--2005-0078D6?style=for-the-badge" alt="2004-2005"> <img src="https://img.shields.io/badge/Korpraali-FFD700?style=for-the-badge" alt="Korpraali"></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+        <article class="skill-group">
+          <h3>Operating Systems and Infrastructure</h3>
+          <div class="skills">
+            <span class="skill advanced">Linux — Advanced</span>
+            <span class="skill advanced">Windows — Advanced</span>
+            <span class="skill strong">Linux servers — Strong practical experience</span>
+            <span class="skill intermediate">Android — Intermediate</span>
+          </div>
+        </article>
 
-  <section>
-    <h2>📚 Contact Me</h2>
-    <p>Feel free to reach out to me via <a href="mailto:jamps3@gmail.com">email</a> <a href="mailto:jamps3@gmail.com"><img src="https://raw.githubusercontent.com/jamps3/cv/main/img/1200px-Gmail.webp" width="30px" alt="Gmail"></a> or connect with me on <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/">LinkedIn</a> <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/"><img src="https://raw.githubusercontent.com/jamps3/cv/main/img/LinkedIn.ico" width="30px" alt="LinkedIn"></a></p>
-  </section>
+        <article class="skill-group">
+          <h3>Electronics and Hardware</h3>
+          <div class="skills">
+            <span class="skill strong">Electronics repair</span>
+            <span class="skill strong">Soldering</span>
+            <span class="skill strong">Access control devices</span>
+            <span class="skill intermediate">PCB design tools</span>
+            <span class="skill strong">Hardware diagnostics</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <footer>
-    <p>"I look forward to collaborating on exciting projects and learning more in the tech space!" - <strong>Jan-Erik Labbas</strong></p>
-  </footer>
+    <section class="section">
+      <h2>Work Experience</h2>
+
+      <article class="experience-item">
+        <div class="experience-heading">
+          <div>
+            <h3>Electronics Specialist / Programmer</h3>
+            <p class="meta">Hypernova Oy, Joensuu · 02/2019 – 2024</p>
+          </div>
+        </div>
+        <ul>
+          <li>Built, repaired, installed, and maintained Toveri access control devices.</li>
+          <li>Diagnosed hardware and software faults using Linux-based tools and practical electronics troubleshooting.</li>
+          <li>Worked with soldering, electronics repair, PCB design tools, FreeCAD, and technical development tasks.</li>
+          <li>Contributed to device development, repair processes, installation work, and documentation.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="experience-heading">
+          <div>
+            <h3>Software Developer Trainee</h3>
+            <p class="meta">Keypro Oy, Joensuu · 11/2022 – 05/2023</p>
+          </div>
+        </div>
+        <ul>
+          <li>Worked in a large professional Python/Django codebase.</li>
+          <li>Implemented REST API functionality and fixed backend defects.</li>
+          <li>Gained experience with professional software development workflows, debugging, and code maintenance.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="experience-heading">
+          <div>
+            <h3>Programmer Trainee / Junior Programmer</h3>
+            <p class="meta">European Forest Institute (EFI) · 06/2011 – 08/2011, 06/2014 – 11/2014</p>
+          </div>
+        </div>
+        <ul>
+          <li>Improved error reporting and fixed bugs in ToSia, a forest growth simulation system.</li>
+          <li>Developed and maintained an intranet portal using Microsoft SharePoint.</li>
+          <li>Worked on practical software maintenance and internal tooling tasks.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="experience-heading">
+          <div>
+            <h3>Website Expert</h3>
+            <p class="meta">Technoreactor Oy &amp; IQlink Oy, Joensuu · 02/2012 – 09/2012</p>
+          </div>
+        </div>
+        <ul>
+          <li>Managed ICT-related tasks and website development for the company and its projects.</li>
+          <li>Worked with web content, technical maintenance, and practical support tasks.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="experience-heading">
+          <div>
+            <h3>Service Desk</h3>
+            <p class="meta">Joensuu Campus Library, Joensuu · 01/2006 – 05/2009</p>
+          </div>
+        </div>
+        <ul>
+          <li>Provided customer support for office tools, printing, account access, and general IT issues.</li>
+          <li>Developed strong customer-service, troubleshooting, and communication skills in a public service environment.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>Selected Projects</h2>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>
+            <a href="https://github.com/jamps3/Quantifile">
+              Quantifile
+            </a>
+          </h3>
+
+          <p>
+            Disk space visualization tool inspired by the classic SpaceMonger application.
+            Quantifile scans directories and displays files and folders as an interactive
+            treemap, making it easy to identify large files and understand disk usage at a glance.
+          </p>
+
+          <ul>
+            <li>Built an interactive treemap UI where rectangle size represents file or folder size.</li>
+            <li>Implemented recursive directory scanning with background processing to keep the UI responsive.</li>
+            <li>Added keyboard navigation, zooming, context menus, bookmarks, search, filtering, and SVG export.</li>
+            <li>Handled permission errors and inaccessible folders with visible placeholders and non-disruptive log messages.</li>
+            <li>Created a standalone Windows ZIP release in addition to Python source usage.</li>
+          </ul>
+
+          <p class="tech-stack">
+            Python · Tkinter · File systems · Treemap visualization · Background scanning · SVG export · Desktop GUI
+          </p>
+        </article>
+        <article class="project-card">
+          <h3>Cross-platform 3D File Manager</h3>
+          <p>
+            Python / PyQt / Qt3D project exploring a spiral-based 3D file navigation interface
+            for browsing files and folders in a more visual way.
+          </p>
+          <p class="tech-stack">Python · PyQt · Qt3D · GUI design · File systems</p>
+        </article>
+
+        <article class="project-card">
+          <h3>SVG Multi-mode Clock</h3>
+          <p>
+            Custom SVG-based clock with multiple time modes, theming, sound, visual effects,
+            quotes, and configurable display options.
+          </p>
+          <p class="tech-stack">SVG · JavaScript · UI design · Time systems</p>
+        </article>
+
+        <article class="project-card">
+          <h3>LeetIRCPythonBot</h3>
+          <p>
+            Python IRC bot with modular command handling, automation features, and integrations
+            such as weather and warning data.
+          </p>
+          <p class="tech-stack">Python · IRC · APIs · Automation</p>
+        </article>
+
+        <article class="project-card">
+          <h3>Customer Order Database UI</h3>
+          <p>
+            Desktop database management application with login, navigation, customer registry,
+            and product registry planning.
+          </p>
+          <p class="tech-stack">Python · PyQt6 · MariaDB · SQL · AWS</p>
+        </article>
+
+        <article class="project-card">
+          <h3>Android Companion / Overlay App Experiments</h3>
+          <p>
+            Android application experiments involving overlay permissions, foreground services,
+            draggable UI elements, icons, and app interaction design.
+          </p>
+          <p class="tech-stack">Android · Kotlin · UI · Foreground services</p>
+        </article>
+
+        <article class="project-card">
+          <h3>Personal Web and Automation Projects</h3>
+          <p>
+            Ongoing personal projects involving web development, scripts, Linux tools,
+            UI experiments, and practical software utilities.
+          </p>
+          <p class="tech-stack">Python · Bash · HTML · CSS · JavaScript · Linux</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Education</h2>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <h3>Programming career course — “Ohjelmoinnistako minulle ammatti?”</h3>
+          <p class="meta">2025 – 2026</p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Code Academy course</h3>
+          <p class="meta">2022 – 2023</p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Seeds for the Future course — Huawei</h3>
+          <p class="meta">2021</p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Master’s studies, University of Eastern Finland</h3>
+          <p class="meta">2017 – 2019</p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Bachelor’s degree, University of Eastern Finland</h3>
+          <p class="meta">2005 – 2019</p>
+          <p>
+            Major: Computer Science. Minors: Chemistry and Biology.
+            Bachelor’s thesis: <em>Choosing a file system for Linux</em>.
+          </p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Entrepreneurship course</h3>
+          <p class="meta">2013</p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Matriculation exam</h3>
+          <p class="meta">2005</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section two-column">
+      <div>
+        <h2>Languages</h2>
+        <ul class="info-list">
+          <li><strong>Finnish:</strong> Fluent / native-level</li>
+          <li><strong>English:</strong> Fluent</li>
+          <li><strong>Swedish:</strong> Basic / intermediate</li>
+          <li><strong>German:</strong> Basic / intermediate</li>
+          <li><strong>Finnish Sign Language:</strong> Basics</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Additional Information</h2>
+        <ul class="info-list">
+          <li><strong>Class B driver’s license:</strong> Yes</li>
+          <li><strong>Car:</strong> Available</li>
+          <li><strong>Security systems installer card:</strong> Expired</li>
+          <li><strong>Military service:</strong> 2004 – 2005, Corporal</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Hobbies and Interests</h2>
+      <div class="interest-list">
+        <span>Electronics: building, soldering, repairing, programming</span>
+        <span>Computers and technology</span>
+        <span>Music: listening, DJing, producing</span>
+        <span>Board games and computer games</span>
+        <span>Nature, plants, wellbeing, and cycling</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        GitHub:
+        <a href="https://github.com/jamps3">github.com/jamps3</a>
+        · LinkedIn:
+        <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/">
+          jan-erik-labbas
+        </a>
+      </p>
+    </footer>
+  </main>
 
   <script>
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+      document.body.classList.add("light-theme");
+    }
+
     function toggleTheme() {
-      document.body.classList.toggle('light-theme');
+      document.body.classList.toggle("light-theme");
+
+      const isLight = document.body.classList.contains("light-theme");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
     }
   </script>
 </body>
