@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/jamps3">
     <img
-      src="https://raw.githubusercontent.com/jamps3/cv/main/img/cv-profile.png"
+      src="https://raw.githubusercontent.com/jamps3/cv/main/img/CV-2026.jpg"
       width="180"
       alt="Portrait of Jan-Erik Labbas"
     />
