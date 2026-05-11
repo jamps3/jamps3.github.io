@@ -85,6 +85,7 @@ I am interested in **software development**, **automation**, **electronics-relat
 | Android development | Intermediate basics |
 | FreeCAD | Technical design |
 | MariaDB | Database application experience |
+| AI Tools / Prompt Engineering | Advanced |
 
 ### Operating Systems and Infrastructure
 
