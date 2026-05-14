@@ -165,16 +165,21 @@ ul {
 
 .action-button:hover::before {
   opacity: 0.45;
-  animation: button-sparks 0.9s linear infinite;
+  animation: button-sparks 2s ease-in-out infinite;
 }
 
 @keyframes button-sparks {
-  from {
+  0%, 100% {
     transform: translateY(20%) rotate(0deg);
   }
-
-  to {
-    transform: translateY(-20%) rotate(16deg);
+  25% {
+    transform: translateY(-5%) rotate(4deg);
+  }
+  50% {
+    transform: translateY(-15%) rotate(10deg);
+  }
+  75% {
+    transform: translateY(-5%) rotate(4deg);
   }
 }
 
