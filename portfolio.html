@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of Jan-Erik Labbas — showcasing projects in Python, web development, electronics, and more."
+  />
+  <title>Portfolio - Jan-Erik Labbas</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="page-actions" aria-label="Page actions">
+    <button class="action-button" type="button" onclick="toggleTheme()">
+      Toggle Theme
+    </button>
+    <button class="action-button secondary" type="button" onclick="window.print()">
+      Print / PDF
+    </button>
+  </div>
+
+  <main class="cv-container">
+    <header class="hero">
+      <h1>Portfolio</h1>
+      <p class="subtitle">
+        Explore a diverse portfolio of innovative projects in Python development, electronics engineering, web technologies, and automation. From desktop GUI applications to interactive web tools and embedded systems, discover solutions that blend technical expertise with creative problem-solving to deliver impactful results.
+      </p>
+      <div class="carousel">
+        <div class="carousel-slides">
+          <div class="carousel-slide"><img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" /></div>
+          <div class="carousel-slide"><img src="img/leetircpythonbot-screenshot.png" alt="LeetIRCPythonBot screenshot" /></div>
+          <div class="carousel-slide"><img src="img/quantifile-screenshot.png" alt="Quantifile screenshot" /></div>
+          <div class="carousel-slide"><img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" /></div>
+        </div>
+        <div class="carousel-controls">
+          <div class="carousel-control active" data-slide="0"></div>
+          <div class="carousel-control" data-slide="1"></div>
+          <div class="carousel-control" data-slide="2"></div>
+          <div class="carousel-control" data-slide="3"></div>
+        </div>
+      </div>
+    </header>
+
+    <div id="image-modal" class="modal">
+      <button id="prev-image">&lt;</button>
+      <img id="modal-image" alt="Full view" />
+      <button id="next-image">&gt;</button>
+      <button id="close-modal">&times;</button>
+    </div>
+
+    <section class="section">
+      <h2>My Projects</h2>
+      <div class="portfolio-projects">
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/GDriveLink">
+              GDriveLink
+            </a>
+          </h3>
+          <p>
+            Description not provided. (Add description here)
+          </p>
+          <p class="tech-stack">Tech stack not specified</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/LeetIRCPythonBot">
+              LeetIRCPythonBot
+            </a>
+          </h3>
+          <p>
+            Python IRC bot with modular command handling, automation features, and integrations such as weather and warning data.
+          </p>
+          <p class="tech-stack">Python · IRC · APIs · Automation</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/leet-clock">
+              leet-clock
+            </a>
+          </h3>
+          <img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" class="portfolio-card-image" width="300" />
+          <p>
+            Description not provided. (Add description here)
+          </p>
+          <p class="tech-stack">Tech stack not specified</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/Quantifile">
+              Quantifile
+            </a>
+          </h3>
+          <p>
+            Disk space visualization tool inspired by the classic SpaceMonger application. Quantifile scans directories and displays files and folders as an interactive treemap, making it easy to identify large files and understand disk usage at a glance.
+          </p>
+          <p class="tech-stack">Python · Tkinter · File systems · Treemap visualization · Background scanning · SVG export · Desktop GUI</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>******</h3>
+          <p>
+            Private project.
+          </p>
+          <p class="tech-stack">Tech stack not specified</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>******</h3>
+          <p>
+            Private project.
+          </p>
+          <p class="tech-stack">Tech stack not specified</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>******</h3>
+          <p>
+            Private project.
+          </p>
+          <p class="tech-stack">Tech stack not specified</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/WaveGenerator">
+              WaveGenerator
+            </a>
+          </h3>
+          <p>
+            Description not provided. (Add description here)
+          </p>
+          <p class="tech-stack">Tech stack not specified</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/VolumeOSD">
+              VolumeOSD
+            </a>
+          </h3>
+          <p>
+            Description not provided. (Add description here)
+          </p>
+          <p class="tech-stack">Tech stack not specified</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/LeetIRCBot">
+              LeetIRCBot
+            </a>
+          </h3>
+          <p>
+            Older Java version of LeetIRCPythonBot.
+          </p>
+          <p class="tech-stack">Java · IRC</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Cross-platform 3D File Manager</h3>
+          <p>
+            Python / PyQt / Qt3D project exploring a spiral-based 3D file navigation interface for browsing files and folders in a more visual way.
+          </p>
+          <p class="tech-stack">Python · PyQt · Qt3D · GUI design · File systems</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>SVG Multi-mode Clock</h3>
+          <p>
+            Custom SVG-based clock with multiple time modes, theming, sound, visual effects, quotes, and configurable display options.
+          </p>
+          <p class="tech-stack">SVG · JavaScript · UI design · Time systems</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Customer Order Database UI</h3>
+          <p>
+            Desktop database management application with login, navigation, customer registry, and product registry planning.
+          </p>
+          <p class="tech-stack">Python · PyQt6 · MariaDB · SQL · AWS</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Android Companion / Overlay App Experiments</h3>
+          <p>
+            Android application experiments involving overlay permissions, foreground services, draggable UI elements, icons, and app interaction design.
+          </p>
+          <p class="tech-stack">Android · Kotlin · UI · Foreground services</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Personal Web and Automation Projects</h3>
+          <p>
+            Ongoing personal projects involving web development, scripts, Linux tools, UI experiments, and practical software utilities.
+          </p>
+          <p class="tech-stack">Python · Bash · HTML · CSS · JavaScript · Linux</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        GitHub:
+        <a href="https://github.com/jamps3">github.com/jamps3</a>
+        · LinkedIn:
+        <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/">
+          jan-erik-labbas
+        </a>
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+      document.body.classList.add("light-theme");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-theme");
+
+      const isLight = document.body.classList.contains("light-theme");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
+
+    // Carousel functionality
+    const slides = document.querySelector('.carousel-slides');
+    const controls = document.querySelectorAll('.carousel-control');
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      controls.forEach((control, index) => {
+        control.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    updateCarousel();
+
+    controls.forEach((control, index) => {
+      control.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+      });
+    });
+
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % controls.length;
+      updateCarousel();
+    }, 5000);
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const index = parseInt(card.dataset.index);
+          if (index % 2 === 0) {
+            card.classList.add('visible-left');
+          } else {
+            card.classList.add('visible-right');
+          }
+        }
+      });
+    }, { threshold: 0 });
+
+    document.querySelectorAll('.portfolio-card').forEach((card, index) => {
+      card.dataset.index = index;
+      observer.observe(card);
+    });
+
+    // Image modal functionality
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const closeBtn = document.getElementById('close-modal');
+    const prevBtn = document.getElementById('prev-image');
+    const nextBtn = document.getElementById('next-image');
+    const carouselImages = document.querySelectorAll('.carousel-slide img');
+    let currentImageIndex = 0;
+
+    document.querySelectorAll('.carousel-slide img').forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentImageIndex = index;
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    const updateModalImage = () => {
+      modalImg.src = carouselImages[currentImageIndex].src;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
+      updateModalImage();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+      updateModalImage();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
