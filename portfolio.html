@@ -3,347 +3,650 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Jan-Erik Labbas — Software Developer Portfolio</title>
+
   <meta
     name="description"
-    content="Portfolio of Jan-Erik Labbas — showcasing projects in Python, web development, electronics, and more."
+    content="Portfolio of Jan-Erik Labbas — software developer working with Python, Android/Kotlin, web development, Linux, automation, electronics, and practical software tools."
   />
-  <title>Portfolio - Jan-Erik Labbas</title>
+  <meta name="author" content="Jan-Erik Labbas" />
+  <meta name="theme-color" content="#050816" />
+
+  <meta property="og:title" content="Jan-Erik Labbas — Portfolio" />
+  <meta
+    property="og:description"
+    content="Software development portfolio featuring Python, Android, web, automation, Linux, electronics, and desktop application projects."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/portfolio-preview.png" />
+  <meta property="og:url" content="https://jamps3.github.io/cv/portfolio.html" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jan-Erik Labbas — Portfolio" />
+  <meta
+    name="twitter:description"
+    content="Python, Android, web, automation, Linux, electronics, and desktop application projects."
+  />
+  <meta name="twitter:image" content="img/portfolio-preview.png" />
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jan-Erik Labbas",
+    "url": "https://github.com/jamps3",
+    "sameAs": [
+      "https://github.com/jamps3",
+      "https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/"
+    ],
+    "jobTitle": "Software Developer",
+    "knowsAbout": [
+      "Python",
+      "Kotlin",
+      "JavaScript",
+      "PHP",
+      "Linux",
+      "Web development",
+      "Automation",
+      "Electronics",
+      "Desktop applications",
+      "Android development"
+    ]
+  }
+  </script>
 </head>
 
-<body>
+<body class="portfolio-page">
   <div class="page-actions" aria-label="Page actions">
-    <button class="action-button" type="button" onclick="toggleTheme()">
+    <button class="action-button small" type="button" id="theme-toggle">
       Toggle Theme
     </button>
-    <button class="action-button secondary" type="button" onclick="window.print()">
+    <button class="action-button small secondary" type="button" onclick="window.print()">
       Print / PDF
     </button>
   </div>
 
   <main class="cv-container">
     <header class="hero">
-      <h1>Portfolio</h1>
+      <p class="eyebrow">Software Developer · Python · Android · Web · Linux · Electronics</p>
+
+      <h1>Jan-Erik Labbas — Software Developer & Technical Problem Solver</h1>
+
       <p class="subtitle">
-        Explore a diverse portfolio of innovative projects in Python development, electronics engineering, web technologies, and automation. From desktop GUI applications to interactive web tools and embedded systems, discover solutions that blend technical expertise with creative problem-solving to deliver impactful results.
+        I build practical software tools, desktop applications, Android experiments,
+        automation systems, web solutions, and electronics-related utilities using
+        Python, Kotlin, JavaScript, PHP, Linux, and hardware-oriented workflows.
       </p>
-      <div class="carousel">
-        <div class="carousel-slides">
-          <div class="carousel-slide"><img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" /></div>
-          <div class="carousel-slide"><img src="img/leetircpythonbot-screenshot.png" alt="LeetIRCPythonBot screenshot" /></div>
-          <div class="carousel-slide"><img src="img/quantifile-screenshot.png" alt="Quantifile screenshot" /></div>
-          <div class="carousel-slide"><img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" /></div>
+
+      <div class="hero-actions">
+        <a class="action-button" href="https://github.com/jamps3" target="_blank" rel="noopener noreferrer">
+          View GitHub
+        </a>
+        <a class="action-button secondary" href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+        <a class="action-button secondary" href="mailto:jamps3@gmail.com">
+          Contact Me
+        </a>
+      </div>
+
+      <div class="carousel" aria-label="Featured project screenshots">
+        <div class="carousel-viewport">
+          <div class="carousel-slides">
+            <div class="carousel-slide">
+              <img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" fetchpriority="high" />
+            </div>
+            <div class="carousel-slide">
+              <img src="img/leetircpythonbot-screenshot.png" alt="LeetIRCPythonBot screenshot" loading="lazy" decoding="async" />
+            </div>
+            <div class="carousel-slide">
+              <img src="img/quantifile-screenshot.png" alt="Quantifile screenshot" loading="lazy" decoding="async" />
+            </div>
+            <div class="carousel-slide">
+              <img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" loading="lazy" decoding="async" />
+            </div>
+          </div>
         </div>
-        <div class="carousel-controls">
-          <div class="carousel-control active" data-slide="0"></div>
-          <div class="carousel-control" data-slide="1"></div>
-          <div class="carousel-control" data-slide="2"></div>
-          <div class="carousel-control" data-slide="3"></div>
+
+        <div class="carousel-controls" aria-label="Carousel controls">
+          <button class="carousel-control active" type="button" data-slide="0" aria-label="Show GDriveLink screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="1" aria-label="Show LeetIRCPythonBot screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="2" aria-label="Show Quantifile screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="3" aria-label="Show Leet Clock screenshot"></button>
         </div>
       </div>
     </header>
 
-    <div id="image-modal" class="modal">
-      <button id="prev-image">&lt;</button>
-      <img id="modal-image" alt="Full view" />
-      <button id="next-image">&gt;</button>
-      <button id="close-modal">&times;</button>
-    </div>
+    <section class="section">
+      <h2>Technical Focus</h2>
+
+      <ul class="skills-list">
+        <li>Python desktop applications, automation, file tools, and GUI utilities</li>
+        <li>Android/Kotlin app experiments with overlay UI, productivity systems, and privacy-first design</li>
+        <li>Web development with PHP, JavaScript, WordPress, ProcessWire, HTML, and CSS</li>
+        <li>Linux server administration, Bash scripting, deployment, and practical tooling</li>
+        <li>Electronics, PCB-related workflows, hardware debugging, and embedded-adjacent development</li>
+      </ul>
+    </section>
 
     <section class="section">
-      <h2>Desktop Applications</h2>
-      <div class="portfolio-projects">
-        <article class="portfolio-card">
+      <h2>Featured Projects</h2>
+
+      <div class="portfolio-projects featured-grid">
+        <article class="portfolio-card featured">
           <h3>
-            <a href="https://github.com/jamps3/GDriveLink">
+            <a href="https://github.com/jamps3/GDriveLink" target="_blank" rel="noopener noreferrer">
               GDriveLink
             </a>
           </h3>
-          <img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" class="portfolio-card-image" width="300" />
-          <p>
-            GDriveLink is a small Python desktop app for quickly turning local files and clipboard images into Google Drive share links. Drop files into the app, or press Ctrl+V to preview and upload a copied image. Uploads go into a configurable Drive folder, are shared as anyone with the link can read, and the resulting link is copied to the clipboard.
+
+          <img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" class="portfolio-card-image" width="600" loading="lazy" decoding="async" />
+
+          <p class="project-impact">
+            Built to remove repetitive manual Google Drive upload, sharing, and copy-link steps.
           </p>
-          <p class="tech-stack">Python</p>
-        </article>
 
-        <article class="portfolio-card">
-          <h3>
-            <a href="https://github.com/jamps3/LeetIRCPythonBot">
-              LeetIRCPythonBot
-            </a>
-          </h3>
-          <img src="img/leetircpythonbot-screenshot.png" alt="LeetIRCPythonBot screenshot" class="portfolio-card-image" width="300" />
           <p>
-            Python IRC bot with modular command handling, automation features, and integrations such as weather and warning data.
+            GDriveLink is a Python desktop app for quickly turning local files and clipboard images into Google Drive share links. Drop files into the app, or press Ctrl+V to preview and upload a copied image.
           </p>
-          <p class="tech-stack">Python · IRC · APIs · Automation</p>
+
+          <ul class="project-meta">
+            <li>Role: Developer</li>
+            <li>Type: Desktop utility</li>
+            <li>Status: Public</li>
+          </ul>
+
+          <p class="tech-stack">Python · Google Drive API · Desktop GUI · Automation</p>
         </article>
 
-        <article class="portfolio-card">
+        <article class="portfolio-card featured">
           <h3>
-            <a href="https://github.com/jamps3/leet-clock">
-              leet-clock
-            </a>
-          </h3>
-  <img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" class="portfolio-card-image" width="300" />
-  <p>
-    Custom SVG-based clock with multiple time modes, theming, sound, visual effects, quotes, and configurable display options.
-  </p>
-  <p class="tech-stack">SVG · JavaScript · UI design · Time systems</p>
-        </article>
-
-        <article class="portfolio-card">
-          <h3>
-            <a href="https://github.com/jamps3/Quantifile">
+            <a href="https://github.com/jamps3/Quantifile" target="_blank" rel="noopener noreferrer">
               Quantifile
             </a>
           </h3>
-          <img src="img/quantifile-screenshot.png" alt="Quantifile screenshot" class="portfolio-card-image" width="300" />
-          <p>
-            Disk space visualization tool inspired by the classic SpaceMonger application. Quantifile scans directories and displays files and folders as an interactive treemap, making it easy to identify large files and understand disk usage at a glance.
+
+          <img src="img/quantifile-screenshot.png" alt="Quantifile screenshot" class="portfolio-card-image" width="600" loading="lazy" decoding="async" />
+
+          <p class="project-impact">
+            Helps users locate large files visually using an interactive treemap.
           </p>
-          <p class="tech-stack">Python · Tkinter · File systems · Treemap visualization · Background scanning · SVG export · Desktop GUI</p>
+
+          <p>
+            Disk space visualization tool inspired by the classic SpaceMonger application. Quantifile scans directories and displays files and folders as an interactive treemap.
+          </p>
+
+          <ul class="project-meta">
+            <li>Role: Developer</li>
+            <li>Type: File system tool</li>
+            <li>Status: Public</li>
+          </ul>
+
+          <p class="tech-stack">Python · Tkinter · File systems · Treemap visualization · SVG export</p>
         </article>
 
-        <article class="portfolio-card">
-          <h3>****** (Android Productivity App)</h3>
-          <p>
-            Private project.
-          </p>
-          <p class="tech-stack">Android · Kotlin · UI · Productivity</p>
-        </article>
+        <article class="portfolio-card featured">
+          <h3>
+            <a href="https://github.com/jamps3/LeetIRCPythonBot" target="_blank" rel="noopener noreferrer">
+              LeetIRCPythonBot
+            </a>
+          </h3>
 
-        <article class="portfolio-card">
-          <h3>****** (Android Virtual Pet / Companion)</h3>
-          <p>
-            Android application experiments involving overlay permissions, foreground services, draggable UI elements, icons, and app interaction design.
-          </p>
-          <p class="tech-stack">Android · Kotlin · UI · Foreground services</p>
-        </article>
+          <img src="img/leetircpythonbot-screenshot.png" alt="LeetIRCPythonBot screenshot" class="portfolio-card-image" width="600" loading="lazy" decoding="async" />
 
-        <article class="portfolio-card">
-          <h3>****** (Android privacy-first budgeting / expense tracker)</h3>
-          <p>
-            Private project.
+          <p class="project-impact">
+            Modular IRC bot for automation, integrations, commands, and practical real-time information tools.
           </p>
-          <p class="tech-stack">Android · Kotlin · UI · Privacy</p>
+
+          <p>
+            Python IRC bot with modular command handling, automation features, and integrations such as weather, warnings, electricity price data, and other API-based tools.
+          </p>
+
+          <ul class="project-meta">
+            <li>Role: Developer</li>
+            <li>Type: Automation / IRC bot</li>
+            <li>Status: Public</li>
+          </ul>
+
+          <p class="tech-stack">Python · IRC · APIs · Automation · Linux</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Desktop Applications & Tools</h2>
+
+      <div class="portfolio-projects">
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/leet-clock" target="_blank" rel="noopener noreferrer">
+              leet-clock
+            </a>
+          </h3>
+
+          <img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" class="portfolio-card-image" width="300" loading="lazy" decoding="async" />
+
+          <p class="project-impact">
+            Experimental visual clock system with custom time modes and interface effects.
+          </p>
+
+          <p>
+            Custom SVG-based clock with multiple time modes, theming, sound, visual effects, quotes, and configurable display options.
+          </p>
+
+          <p class="tech-stack">SVG · JavaScript · UI design · Time systems</p>
         </article>
 
         <article class="portfolio-card">
           <h3>
-            <a href="https://github.com/jamps3/WaveGenerator">
+            <a href="https://github.com/jamps3/WaveGenerator" target="_blank" rel="noopener noreferrer">
               WaveGenerator
             </a>
           </h3>
-          <p>
-            A Python-based wave generator with both console and GUI interfaces, featuring custom waveform drawing capabilities.
+
+          <p class="project-impact">
+            Tool for generating and experimenting with custom waveforms.
           </p>
+
+          <p>
+            Python-based wave generator with both console and GUI interfaces, featuring custom waveform drawing capabilities.
+          </p>
+
           <p class="tech-stack">Python · Console · GUI design</p>
         </article>
 
         <article class="portfolio-card">
           <h3>
-            <a href="https://github.com/jamps3/VolumeOSD">
+            <a href="https://github.com/jamps3/VolumeOSD" target="_blank" rel="noopener noreferrer">
               VolumeOSD
             </a>
           </h3>
-          <p>
-            Windows 10 volume on-screen display (OSD) application that shows a customizable volume bar when the system volume changes, providing visual feedback for volume adjustments.
+
+          <p class="project-impact">
+            Customizable Windows volume feedback overlay.
           </p>
-          <p class="tech-stack">.NET</p>
+
+          <p>
+            Windows volume on-screen display application that shows a customizable volume bar when the system volume changes.
+          </p>
+
+          <p class="tech-stack">.NET · WPF · Windows · System tray</p>
         </article>
 
         <article class="portfolio-card">
           <h3>
-            <a href="https://github.com/jamps3/LeetIRCBot">
+            <a href="https://github.com/jamps3/LeetIRCBot" target="_blank" rel="noopener noreferrer">
               LeetIRCBot
             </a>
           </h3>
+
+          <p class="project-impact">
+            Earlier Java-based IRC bot foundation.
+          </p>
+
           <p>
             Older Java version of LeetIRCPythonBot.
           </p>
+
           <p class="tech-stack">Java · IRC</p>
         </article>
 
         <article class="portfolio-card">
           <h3>Cross-platform 3D File Manager</h3>
-          <p>
-            Python / PyQt / Qt3D project exploring a spiral-based 3D file navigation interface for browsing files and folders in a more visual way.
+
+          <p class="project-impact">
+            Exploration of more visual file navigation using a 3D spiral interface.
           </p>
+
+          <p>
+            Python / PyQt / Qt3D project exploring a spiral-based 3D file navigation interface for browsing files and folders.
+          </p>
+
           <p class="tech-stack">Python · PyQt · Qt3D · GUI design · File systems</p>
         </article>
 
         <article class="portfolio-card">
           <h3>Customer Order Database UI</h3>
+
+          <p class="project-impact">
+            Desktop database management interface for structured customer and product workflows.
+          </p>
+
           <p>
             Desktop database management application with login, navigation, customer registry, and product registry planning.
           </p>
+
           <p class="tech-stack">Python · PyQt6 · MariaDB · SQL · AWS</p>
         </article>
 
         <article class="portfolio-card">
           <h3>Personal Web and Automation Projects</h3>
+
+          <p class="project-impact">
+            Practical scripts, experiments, and utilities for real-world development workflows.
+          </p>
+
           <p>
             Ongoing personal projects involving web development, scripts, Linux tools, UI experiments, and practical software utilities.
           </p>
+
           <p class="tech-stack">Python · Bash · HTML · CSS · JavaScript · Linux</p>
         </article>
       </div>
     </section>
 
     <section class="section">
+      <h2>Android Projects</h2>
+
+      <div class="portfolio-projects">
+        <article class="portfolio-card">
+          <h3>Gamified Android Productivity App</h3>
+
+          <p class="project-impact">
+            Private productivity project focused on motivation, focus, and task completion.
+          </p>
+
+          <p>
+            Android/Kotlin project exploring task management, reward systems, focus sessions, streaks, achievements, and motivational UI design.
+          </p>
+
+          <p class="tech-stack">Android · Kotlin · Compose · Productivity · UI design</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Android Virtual Pet / Companion</h3>
+
+          <p class="project-impact">
+            Experimenting with Android overlay behavior and always-available companion UI.
+          </p>
+
+          <p>
+            Android application experiments involving overlay permissions, foreground services, draggable UI elements, icons, and app interaction design.
+          </p>
+
+          <p class="tech-stack">Android · Kotlin · UI · Overlay windows · Foreground services</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Privacy-first Budgeting / Expense Tracker</h3>
+
+          <p class="project-impact">
+            Offline-first budgeting concept focused on local data ownership and receipt analysis.
+          </p>
+
+          <p>
+            Private Android/Kotlin project concept for receipt scanning, local categorization, offline storage, charts, and optional encrypted backup.
+          </p>
+
+          <p class="tech-stack">Android · Kotlin · Room · SQLite · OCR · Privacy</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
       <h2>Websites</h2>
+
       <div class="portfolio-projects">
         <article class="portfolio-card">
           <h3>
-            <a href="https://kauppa.cafetaika.fi/">Cafetaika</a>
+            <a href="https://kauppa.cafetaika.fi/" target="_blank" rel="noopener noreferrer">
+              Cafetaika
+            </a>
           </h3>
-          <img src="img/cafetaika.png" alt="Cafetaika screenshot" class="portfolio-card-image" width="300" />
-          <p>Web shop for a local coffee shop / confectionery specializing in cakes, pies, brunch boxes, and other baked goods.</p>
-          <p class="tech-stack">WordPress</p>
+
+          <img src="img/cafetaika.png" alt="Cafetaika webshop screenshot" class="portfolio-card-image" width="300" loading="lazy" decoding="async" />
+
+          <p class="project-impact">
+            E-commerce website for selling cakes, baked goods, brunch products, and café items online.
+          </p>
+
+          <p>
+            Web shop for a local coffee shop / confectionery specializing in cakes, pies, brunch boxes, and other baked goods.
+          </p>
+
+          <p class="tech-stack">WordPress · WooCommerce · Web shop</p>
         </article>
 
         <article class="portfolio-card">
           <h3>
-            <a href="https://virverosti.fi/keikat">VIRVE ROSTI - Gigs</a>
+            <a href="https://virverosti.fi/keikat" target="_blank" rel="noopener noreferrer">
+              VIRVE ROSTI — Gigs
+            </a>
           </h3>
-          <p>Added automatically updating gigs from another site.</p>
-          <p class="tech-stack">PHP</p>
+
+          <p class="project-impact">
+            Implemented automatically updating gig/event listings by integrating external site data.
+          </p>
+
+          <p>
+            Added automatically updating gigs from another site into the existing website.
+          </p>
+
+          <p class="tech-stack">PHP · Web integration · Automation</p>
         </article>
 
         <article class="portfolio-card">
           <h3>
-            <a href="https://molentum.fi/">Molentum</a>
+            <a href="https://molentum.fi/" target="_blank" rel="noopener noreferrer">
+              Molentum
+            </a>
           </h3>
-          <img src="img/molentum.png" alt="Molentum screenshot" class="portfolio-card-image" width="300" />
-          <p>Updated the globe to WebGL2 and optimized for PageSpeed.</p>
-          <p class="tech-stack">WebGL2 · JavaScript</p>
+
+          <img src="img/molentum.png" alt="Molentum website screenshot" class="portfolio-card-image" width="300" loading="lazy" decoding="async" />
+
+          <p class="project-impact">
+            Modernized an interactive globe animation and improved frontend performance.
+          </p>
+
+          <p>
+            Updated the globe to WebGL2 and optimized frontend behavior for PageSpeed.
+          </p>
+
+          <p class="tech-stack">WebGL2 · JavaScript · Performance optimization</p>
         </article>
 
         <article class="portfolio-card">
           <h3>Web Page Updates</h3>
-          <p>Updated CMS of 80+ web pages, made a script to half-automate the process.</p>
-          <p class="tech-stack">ProcessWire · Linux/Bash scripting</p>
+
+          <p class="project-impact">
+            Updated and migrated 80+ CMS-based websites with automation support.
+          </p>
+
+          <p>
+            Updated CMS installations across many web pages and created a Bash script to partially automate repetitive maintenance work.
+          </p>
+
+          <p class="tech-stack">ProcessWire · Linux · Bash scripting · CMS maintenance</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <h2>Contact</h2>
+
+      <p>
+        Interested in Python tools, Android apps, web development, automation, Linux workflows, or technical problem-solving?
+      </p>
+
+      <div class="hero-actions">
+        <a class="action-button" href="mailto:jamps3@gmail.com">Email Me</a>
+        <a class="action-button secondary" href="https://github.com/jamps3" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="action-button secondary" href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </section>
 
     <footer class="footer">
       <p>
-        GitHub:
-        <a href="https://github.com/jamps3">github.com/jamps3</a>
-        · LinkedIn:
-        <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/">
-          jan-erik-labbas
-        </a>
+        © Jan-Erik Labbas ·
+        <a href="https://github.com/jamps3" target="_blank" rel="noopener noreferrer">GitHub</a>
+        ·
+        <a href="https://www.linkedin.com/in/jan-erik-labbas-2a5398b6/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
     </footer>
   </main>
 
+  <div id="image-modal" class="modal" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <button id="prev-image" class="modal-button modal-prev" type="button" aria-label="Previous image">&lt;</button>
+    <img id="modal-image" alt="Full size preview" />
+    <button id="next-image" class="modal-button modal-next" type="button" aria-label="Next image">&gt;</button>
+    <button id="close-modal" class="modal-button modal-close" type="button" aria-label="Close image preview">&times;</button>
+  </div>
+
   <script>
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const savedTheme = localStorage.getItem("theme");
+    const themeToggle = document.getElementById("theme-toggle");
 
     if (savedTheme === "light") {
       document.body.classList.add("light-theme");
     }
 
-    function toggleTheme() {
+    themeToggle.addEventListener("click", () => {
       document.body.classList.toggle("light-theme");
 
       const isLight = document.body.classList.contains("light-theme");
       localStorage.setItem("theme", isLight ? "light" : "dark");
-    }
+    });
 
-    // Carousel functionality
-    const slides = document.querySelector('.carousel-slides');
-    const controls = document.querySelectorAll('.carousel-control');
+    const slides = document.querySelector(".carousel-slides");
+    const controls = document.querySelectorAll(".carousel-control");
     let currentSlide = 0;
 
     function updateCarousel() {
       slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
       controls.forEach((control, index) => {
-        control.classList.toggle('active', index === currentSlide);
+        const isActive = index === currentSlide;
+        control.classList.toggle("active", isActive);
+        control.setAttribute("aria-current", isActive ? "true" : "false");
       });
     }
 
-    updateCarousel();
-
     controls.forEach((control, index) => {
-      control.addEventListener('click', () => {
+      control.addEventListener("click", () => {
         currentSlide = index;
         updateCarousel();
       });
     });
 
-    // Auto-slide every 5 seconds
-    setInterval(() => {
-      currentSlide = (currentSlide + 1) % controls.length;
-      updateCarousel();
-    }, 5000);
+    updateCarousel();
 
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const card = entry.target;
-          const index = parseInt(card.dataset.index);
-          if (index % 2 === 0) {
-            card.classList.add('visible-left');
-          } else {
-            card.classList.add('visible-right');
+    if (!prefersReducedMotion) {
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % controls.length;
+        updateCarousel();
+      }, 5000);
+    }
+
+    if ("IntersectionObserver" in window && !prefersReducedMotion) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
-        }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".portfolio-card").forEach((card) => {
+        observer.observe(card);
       });
-    }, { threshold: 0 });
+    } else {
+      document.querySelectorAll(".portfolio-card").forEach((card) => {
+        card.classList.add("visible");
+      });
+    }
 
-    document.querySelectorAll('.portfolio-card').forEach((card, index) => {
-      card.dataset.index = index;
-      observer.observe(card);
-    });
-
-    // Image modal functionality
-    const modal = document.getElementById('image-modal');
-    const modalImg = document.getElementById('modal-image');
-    const closeBtn = document.getElementById('close-modal');
-    const prevBtn = document.getElementById('prev-image');
-    const nextBtn = document.getElementById('next-image');
-    const carouselImages = document.querySelectorAll('.carousel-slide img');
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-image");
+    const closeBtn = document.getElementById("close-modal");
+    const prevBtn = document.getElementById("prev-image");
+    const nextBtn = document.getElementById("next-image");
+    const carouselImages = Array.from(document.querySelectorAll(".carousel-slide img"));
     let currentImageIndex = 0;
+    let modalHasCarouselNavigation = false;
 
-    document.querySelectorAll('.carousel-slide img, .portfolio-card img').forEach((img, index) => {
-      img.addEventListener('click', () => {
-        if (img.closest('.carousel-slide')) {
-          currentImageIndex = Array.from(document.querySelectorAll('.carousel-slide img')).indexOf(img);
-        } else {
-          currentImageIndex = -1; // for card images, no navigation
+    function openModal(img) {
+      const carouselIndex = carouselImages.indexOf(img);
+
+      modalHasCarouselNavigation = carouselIndex !== -1;
+      currentImageIndex = modalHasCarouselNavigation ? carouselIndex : 0;
+
+      prevBtn.hidden = !modalHasCarouselNavigation;
+      nextBtn.hidden = !modalHasCarouselNavigation;
+
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || "Full size preview";
+      modal.hidden = false;
+
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      modalImg.removeAttribute("src");
+    }
+
+    function updateModalImage() {
+      if (!modalHasCarouselNavigation) return;
+
+      const img = carouselImages[currentImageIndex];
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || "Full size preview";
+    }
+
+    document.querySelectorAll(".carousel-slide img, .portfolio-card img").forEach((img) => {
+      img.addEventListener("click", () => openModal(img));
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      img.setAttribute("aria-label", `Open larger preview: ${img.alt}`);
+
+      img.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(img);
         }
-        modal.style.display = 'flex';
-        modalImg.src = img.src;
       });
     });
 
-    const updateModalImage = () => {
-      modalImg.src = carouselImages[currentImageIndex].src;
-    };
-
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener("click", () => {
       currentImageIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
       updateModalImage();
     });
 
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener("click", () => {
       currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
       updateModalImage();
     });
 
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
+    closeBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
     });
 
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
+    document.addEventListener("keydown", (event) => {
+      if (modal.hidden) return;
+
+      if (event.key === "Escape") {
+        closeModal();
+      }
+
+      if (modalHasCarouselNavigation && event.key === "ArrowLeft") {
+        currentImageIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
+        updateModalImage();
+      }
+
+      if (modalHasCarouselNavigation && event.key === "ArrowRight") {
+        currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+        updateModalImage();
       }
     });
   </script>
