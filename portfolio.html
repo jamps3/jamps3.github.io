@@ -31,6 +31,8 @@
   <meta name="twitter:image" content="img/portfolio-preview.png" />
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
@@ -111,6 +113,8 @@
             </div>
           </div>
         </div>
+
+        <h2 class="carousel-title">GDriveLink</h2>
 
         <div class="carousel-controls" aria-label="Carousel controls">
           <button class="carousel-control active" type="button" data-slide="0" aria-label="Show GDriveLink screenshot"></button>
@@ -515,6 +519,7 @@
 
     const slides = document.querySelector(".carousel-slides");
     const controls = document.querySelectorAll(".carousel-control");
+    const titles = ["GDriveLink", "LeetIRCPythonBot", "Quantifile", "Leet Clock"];
     let currentSlide = 0;
 
     function updateCarousel() {
@@ -525,6 +530,8 @@
         control.classList.toggle("active", isActive);
         control.setAttribute("aria-current", isActive ? "true" : "false");
       });
+
+      document.querySelector(".carousel-title").textContent = titles[currentSlide];
     }
 
     controls.forEach((control, index) => {
@@ -533,6 +540,8 @@
         updateCarousel();
       });
     });
+
+    updateCarousel();
 
     updateCarousel();
 
