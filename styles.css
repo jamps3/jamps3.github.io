@@ -135,18 +135,71 @@ ul {
   transition: all 0.4s ease;
 }
 
-.action-button:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
 .action-button {
-  transition: filter 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-button::before {
+  content: "";
+  position: absolute;
+  inset: -80%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(78, 161, 255, 0.9) 0 1px, transparent 2px);
+  background-size: 42px 42px, 28px 28px;
+  opacity: 0;
+  transform: translateY(20%) rotate(0deg);
+  pointer-events: none;
 }
 
 .action-button:hover {
-  filter: brightness(1.08);
+  color: #000000;
+  transform: scale(1.06) translateY(-2px);
+  filter: brightness(1.18) saturate(1.25);
+  box-shadow:
+    0 0 18px rgba(78, 161, 255, 0.75),
+    0 0 38px rgba(78, 161, 255, 0.45),
+    0 14px 44px rgba(0, 0, 0, 0.35);
+}
+
+.action-button:hover::before {
+  opacity: 0.45;
+  animation: button-sparks 0.9s linear infinite;
+}
+
+@keyframes button-sparks {
+  from {
+    transform: translateY(20%) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(-20%) rotate(16deg);
+  }
+}
+
+.action-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.55),
+    transparent 80%
+  );
+  transform: translateX(-140%);
+  pointer-events: none;
+}
+
+.action-button:hover::after {
+  animation: button-shine 0.75s ease;
+}
+
+@keyframes button-shine {
+  to {
+    transform: translateX(140%);
+  }
 }
 
 .action-button.secondary {
