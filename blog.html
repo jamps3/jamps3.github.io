@@ -16,6 +16,22 @@ permalink: /blog.html
 <section class="blog-tools" aria-label="Blog tools">
   <label for="blog-search">Search posts</label>
   <input id="blog-search" type="search" placeholder="Search Linux, xrandr, Apache, irssi...">
+
+  <div class="filter-row" aria-label="Filter posts">
+    <label for="source-filter">Source</label>
+    <select id="source-filter">
+      <option value="all">All posts</option>
+      <option value="native">Native posts</option>
+      <option value="migrated">Migrated posts</option>
+    </select>
+
+    <label for="lang-filter">Language</label>
+    <select id="lang-filter">
+      <option value="all">All languages</option>
+      <option value="en">English</option>
+      <option value="fi">Finnish</option>
+    </select>
+  </div>
 </section>
 
 <section class="post-list" id="post-list">

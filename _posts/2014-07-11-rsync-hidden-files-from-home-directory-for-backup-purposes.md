@@ -7,10 +7,15 @@ categories: [notes]
 tags: ["backup", "files", "hidden", "rsync"]
 excerpt: "rsync -a ~/.[^.]* /path/to/backup you can also use: -v for verbose -z for compression"
 original_url: "https://koodinpatkia.blogspot.com/2014/07/rsync-hidden-files-for-backup-purposes.html"
+migrated: true
+lang: en
 ---
 
-rsync -a ~/.[^.]* /path/to/backup<br />
-<br />
-you can also use:<br />
--v for verbose<br />
+rsync -a ~/.[^.]* /path/to/backup
+
+you can also use:
+
+-v for verbose
+
 -z for compression
+

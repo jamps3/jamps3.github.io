@@ -7,12 +7,16 @@ categories: [web]
 tags: ["css", "fonts", "web"]
 excerpt: "1) Download fonts to your server from FontSquirrel 2) Add these CSS definitions, change the path and font filenames if needed: /*-- Font Definitions, free Roboto font from FontS..."
 original_url: "https://koodinpatkia.blogspot.com/2014/08/font-face-definition-for-multiple.html"
+migrated: true
+lang: en
 ---
 
-1) Download fonts to your server from FontSquirrel<br />
-2) Add these CSS definitions, change the path and font filenames if needed:<br />
-<br />
-<code><pre>/*-- Font Definitions, free Roboto font from FontSquirrel - works with all major browsers--*/
+1) Download fonts to your server from FontSquirrel
+
+2) Add these CSS definitions, change the path and font filenames if needed:
+
+```text
+/*-- Font Definitions, free Roboto font from FontSquirrel - works with all major browsers--*/
 @font-face {
     font-family: 'robotoregular';
     src: url('fonts/Roboto-Regular-webfont.eot');
@@ -43,11 +47,15 @@ original_url: "https://koodinpatkia.blogspot.com/2014/08/font-face-definition-fo
     font-weight: normal;
     font-style: normal;
 }
-</pre></code><br />
-3) Done! It was so easy!<br />
-<br />
-Here I have used 3 different weights of the same Roboto font. You can manage with only one and use the font-weight property, but I heard it's sometimes uglier method. This method ensures the best quality.<br />
-<br />
-Btw I compared the same Roboto font from Google fonts and FontSquirrel:<br />
-Google Roboto is ~125kB<br />
+```
+
+3) Done! It was so easy!
+
+Here I have used 3 different weights of the same Roboto font. You can manage with only one and use the font-weight property, but I heard it's sometimes uglier method. This method ensures the best quality.
+
+Btw I compared the same Roboto font from Google fonts and FontSquirrel:
+
+Google Roboto is ~125kB
+
 FontSquirrel Roboto is ~25kB
+

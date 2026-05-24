@@ -7,6 +7,8 @@ categories: [notes]
 tags: ["benchmark", "gpu", "stability", "testing"]
 excerpt: "\"RTHDRIBL is an application which is so awesome, it needed to have its awesomeness reduced by giving it a retarded name!\" The name is an acronym for Real-Time High Dynamic Range..."
 original_url: "https://koodinpatkia.blogspot.com/2014/03/rthdribl-for-testing-gpu-stability-on.html"
+migrated: true
+lang: en
 ---
 
 "RTHDRIBL is an application which is so awesome, it needed to have its awesomeness reduced by giving it a retarded name!" The name is an acronym for Real-Time High Dynamic Range Image-Based Lighting.
@@ -17,3 +19,4 @@ Official website:
 http://www.daionet.gr.jp/~masa/rthdribl/
 
 It's old (2003), but that doesn't reduce it's awesomeness.
+

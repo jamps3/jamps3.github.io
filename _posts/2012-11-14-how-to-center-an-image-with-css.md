@@ -7,13 +7,17 @@ categories: [web]
 tags: ["center", "css", "image"]
 excerpt: "How to center an image with CSS: img.center { display: block; margin-left: auto; margin-right: auto; }"
 original_url: "https://koodinpatkia.blogspot.com/2012/11/how-to-center-image-with-css.html"
+migrated: true
+lang: en
 ---
 
 How to center an image with CSS:
-<code class="prettyprint">
+
+```text
 img.center {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-</code>
+```
+

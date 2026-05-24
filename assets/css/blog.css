@@ -192,6 +192,28 @@ p {
   font: inherit;
 }
 
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
+}
+
+.filter-row label {
+  align-self: center;
+}
+
+.filter-row select {
+  min-height: 2.55rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--code-bg);
+  color: var(--text);
+  font: inherit;
+}
+
 .post-list {
   display: grid;
   gap: 1rem;
@@ -203,6 +225,27 @@ p {
 
 .blog-card h2 {
   margin-bottom: 0.4rem;
+}
+
+.post-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.65rem;
+}
+
+.post-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(78, 161, 255, 0.12);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .post-meta {

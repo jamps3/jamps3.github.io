@@ -7,31 +7,39 @@ categories: [linux]
 tags: ["apache", "config", "user", "www"]
 excerpt: "Open Apache2 config file: sudo nano /etc/apache2/apache2.conf Add these lines in the end, change *your_username* to yours: # UserDir # UserDir public_html UserDir disabled UserD..."
 original_url: "https://koodinpatkia.blogspot.com/2012/11/adding-per-user-web-directories-with.html"
+migrated: true
+lang: en
 ---
 
 Open Apache2 config file:
-<code class="prettyprint">
+
+```text
 sudo nano /etc/apache2/apache2.conf
-</code>
+```
 Add these lines in the end, change *your_username* to yours:
-<code class="prettyprint">
+
+```text
 # UserDir #
 UserDir public_html
 UserDir disabled
 UserDir enabled *your_username*
 Options Indexes FollowSymLinks -MultiViews AllowOverride None Order allow,deny Allow from all
-</code>
+```
 Make symbolic links for mod_userdir to enable it:
-<code class="prettyprint">
+
+```text
 cd /etc/apache2/mods-available/
 sudo ln -s ../mods-available/userdir.conf
 sudo ln -s ../mods-available/userdir.load
-</code>
+```
 Or enable the module without editing any files:
-<code class="prettyprint">
+
+```text
 a2enmod userdir
-</code>
+```
 Remember to restart Apache:
-<code class="prettyprint">
+
+```text
 service apache2 restart
-</code>
+```
+

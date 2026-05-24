@@ -1,5 +1,18 @@
-<article class="blog-card" data-tags="{{ post.tags | join: ' ' | escape }}" data-title="{{ post.title | downcase | escape }}">
+<article
+  class="blog-card"
+  data-tags="{{ post.tags | join: ' ' | escape }}"
+  data-title="{{ post.title | downcase | escape }}"
+  data-url="{{ post.url | relative_url }}"
+  data-source="{% if post.migrated %}migrated{% else %}native{% endif %}"
+  data-lang="{{ post.lang | default: site.lang | slice: 0, 2 | downcase }}"
+>
   <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+  <div class="post-badges" aria-label="Post attributes">
+    {% if post.migrated %}
+      <span class="post-badge">Migrated from Blogger</span>
+    {% endif %}
+    <span class="post-badge">{{ post.lang | default: site.lang | slice: 0, 2 | upcase }}</span>
+  </div>
   {% include post-meta.html post=post %}
   <p>{{ post.excerpt | strip_html | truncate: 220 | escape }}</p>
   {% include tag-list.html tags=post.tags %}

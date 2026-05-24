@@ -225,6 +225,8 @@ categories: [$category]
 tags: $tags
 excerpt: $(ConvertTo-YamlString $excerpt)
 original_url: $(ConvertTo-YamlString $originalUrl)
+migrated: true
+lang: en
 ---
 
 $html

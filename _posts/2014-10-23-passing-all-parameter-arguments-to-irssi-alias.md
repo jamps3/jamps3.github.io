@@ -7,6 +7,19 @@ categories: [notes]
 tags: ["alias", "irssi", "self"]
 excerpt: "$* expands to all arguments passed to an alias so for example, making alias /self which sends all arguments passed to it to myself using network 'Network' : /alias self /msg -Ne..."
 original_url: "https://koodinpatkia.blogspot.com/2014/10/passing-all-parameter-arguments-to.html"
+migrated: true
+lang: en
 ---
 
-<pre>$*        expands to all arguments passed to an alias</pre><pre>&nbsp;</pre><pre>so for example, making alias /self which sends all arguments passed to it to myself using network 'Network' :</pre><pre>/alias self /msg -Network $N $*</pre>
+```text
+$*        expands to all arguments passed to an alias
+```
+
+```text
+so for example, making alias /self which sends all arguments passed to it to myself using network 'Network' :
+```
+
+```text
+/alias self /msg -Network $N $*
+```
+

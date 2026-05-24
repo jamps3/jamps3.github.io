@@ -7,34 +7,42 @@ categories: [linux]
 tags: ["/var/www", "apache", "chmod", "chown", "config", "group", "linux", "permissions", "umask", "www"]
 excerpt: "Create a new group (www-pub) and add the users to that group: groupadd www-pub usermod -a -G www-pub usera ## must use -a to append to existing groups usermod -a -G www-pub user..."
 original_url: "https://koodinpatkia.blogspot.com/2012/11/linux-permissions-for-www-pub-group.html"
+migrated: true
+lang: en
 ---
 
 Create a new group (www-pub) and add the users to that group:
-<code class="prettyprint">
-groupadd www-pub<br />
+
+```text
+groupadd www-pub
+
 usermod -a -G www-pub usera ## must use -a to append to existing groups
 usermod -a -G www-pub userb
 groups usera ## display groups for user
-</code>
+```
 
 Change the ownership of everything under /var/www to root:www-pub
-<code class="prettyprint">
+
+```text
 chown -R root:www-pub /var/www ## -R for recursive
-</code>
+```
 Change the permissions of all the folders to 2775
-<code class="prettyprint">
+
+```text
 chmod 2775 /var/www ## 2=set group id, 7=rwx for owner (root), 7=rwx for group (www-pub), 5=rx for world (including apache www-data user)
-</code>
+```
 Set group ID (SETGID) bit (2) causes the group (www-pub) to be copied to all new files/folders created in that folder. Other options are SETUID (4) to copy the user id, and STICKY (1) which I think lets only the owner delete files.
 
 There's a -R recursive option, but that won't discriminate between files and folders, so you have to use find, like so:
-<code class="prettyprint">
+
+```text
 find /var/www -type d -exec chmod 2775 {} +
-</code>
+```
 Change all the files to 0664
-<code class="prettyprint">
+
+```text
 find /var/www -type f -exec chmod 0664 {} +
-</code>
+```
 Change the umask for your users to 0002
 
 The umask controls the default file creation permissions, 0002 means files will have 664 and directories 775. Setting this (by editing the umask line at the bottom of /etc/profile in my case) means files created by one user will be writable by other users in the www-group without needing to chmod them.
@@ -45,6 +53,8 @@ Note: You'll need to logout/in for changes to your groups to take effect!
 
 Note: Add the following line to /etc/pam.d/login to set the user specific
 umask at login:
-<code class="prettyprint">
+
+```text
 session optional pam_umask.so umask=0022
-</code>
+```
+

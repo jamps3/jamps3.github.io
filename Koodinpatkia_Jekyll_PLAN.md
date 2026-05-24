@@ -1010,6 +1010,7 @@ After the first version works, possible improvements:
 - Finnish/English language filter.
 - Small “copy command” buttons for individual shell command blocks.
 - Link previews for posts on the main portfolio page.
+- Recent “Code Bits” teaser section on the home and/or portfolio page showing the newest 3–5 blog posts.
 
 ---
 

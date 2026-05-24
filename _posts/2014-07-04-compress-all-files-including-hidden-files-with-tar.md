@@ -7,7 +7,11 @@ categories: [notes]
 tags: ["compress", "files", "tar"]
 excerpt: "Type: tar -cvjf compressed.tar.bz2 path/to/files/."
 original_url: "https://koodinpatkia.blogspot.com/2014/07/compress-all-files-including-hidden.html"
+migrated: true
+lang: en
 ---
 
-Type: <br />
+Type: 
+
 tar -cvjf compressed.tar.bz2 path/to/files/.
+
