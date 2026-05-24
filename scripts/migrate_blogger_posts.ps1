@@ -205,6 +205,10 @@ foreach ($entry in $entries) {
   }
 
   $html = [string] $entry.content.'$t'
+  $html = $html -replace 'https://blogger\.googleusercontent\.com/img/b/R29vZ2xl/AVvXsEhIQajuFQlhD0CI7yymI0i5CuLPF2ssDRZHtRdq9o46I2OwKdEEMw5hW5-tQX6QLiGUPGFEMerlS9bENSn0gtJF030KW-zfptXTv1esbLu52c1yO3NOFYzPFXsCHvI9GzwldKJ76qeGAnw/s1600/puttyconfig2\.png', "{{ '/assets/blog/images/puttyconfig2.png' | relative_url }}"
+  $html = $html -replace 'https://blogger\.googleusercontent\.com/img/b/R29vZ2xl/AVvXsEjlxlIRUcclJn9pDM1P-piSVJ1i7sDgIum2NO-XufSLxQHmXclEFem_E-d5l3LmjROeXqffiB6eLbuWGkzHf-ikwAqsfpMt_LA4ip-jybYq-j-_jrnj1GpQ_owD4FcZZtl5aCGHNojkZ1o/s1600/puttyconfig1\.png', "{{ '/assets/blog/images/puttyconfig1.png' | relative_url }}"
+  $html = $html -replace '<a href="\{\{ ''/assets/blog/images/puttyconfig2\.png'' \| relative_url \}" imageanchor="1"><img border="0" src="\{\{ ''/assets/blog/images/puttyconfig2\.png'' \| relative_url \}" height="397" width="400" /></a>', '<a href="{{ ''/assets/blog/images/puttyconfig2.png'' | relative_url }}"><img src="{{ ''/assets/blog/images/puttyconfig2.png'' | relative_url }}" height="397" width="400" alt="PuTTY configuration screenshot showing SSH tunnel settings." /></a>'
+  $html = $html -replace '<a href="\{\{ ''/assets/blog/images/puttyconfig1\.png'' \| relative_url \}" imageanchor="1"><img border="0" src="\{\{ ''/assets/blog/images/puttyconfig1\.png'' \| relative_url \}" height="398" width="400" /></a>', '<a href="{{ ''/assets/blog/images/puttyconfig1.png'' | relative_url }}"><img src="{{ ''/assets/blog/images/puttyconfig1.png'' | relative_url }}" height="398" width="400" alt="PuTTY configuration screenshot showing forwarded port settings." /></a>'
   $excerpt = ConvertTo-Excerpt $html
   $tags = ConvertTo-TagArray $entry.category $title $html
   $category = Get-PrimaryCategory $entry.category $title $html

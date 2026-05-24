@@ -1,7 +1,7 @@
 <article class="blog-card" data-tags="{{ post.tags | join: ' ' | escape }}" data-title="{{ post.title | downcase | escape }}">
   <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
   {% include post-meta.html post=post %}
-  <p>{{ post.excerpt | strip_html | truncate: 220 }}</p>
+  <p>{{ post.excerpt | strip_html | truncate: 220 | escape }}</p>
   {% include tag-list.html tags=post.tags %}
   <a class="read-more" href="{{ post.url | relative_url }}">Read post &rarr;</a>
 </article>
