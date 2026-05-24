@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <p class="post-kicker">Koodinpätkiä / Code Bits</p>
+    <h1>{{ page.title }}</h1>
+    {% include post-meta.html post=page %}
+    {% include tag-list.html tags=page.tags %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.original_url %}
+    <aside class="post-original">
+      Originally published on the old Blogger version of Koodinpätkiä.
+      <a href="{{ page.original_url }}" rel="noopener">View original post</a>.
+    </aside>
+  {% endif %}
+
+  <nav class="post-nav" aria-label="Post navigation">
+    {% if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.title }}</a>
+    {% endif %}
+    {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}">{{ page.next.title }} &rarr;</a>
+    {% endif %}
+  </nav>
+
+  <p class="back-link"><a href="{{ '/blog.html' | relative_url }}">&larr; Back to all posts</a></p>
+</article>

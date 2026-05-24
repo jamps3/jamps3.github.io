@@ -30,6 +30,41 @@
 
 ---
 
+## Koodinpätkiä / Code Bits Blog
+
+This repository includes a lightweight Jekyll blog for short technical notes, fixes, commands, snippets, and migrated posts from the old Blogger archive.
+
+To add a post:
+
+1. Create a Markdown file in `_posts/` using the name format `YYYY-MM-DD-post-title.md`.
+2. Add YAML front matter with `title`, `date`, `categories`, `tags`, and `excerpt`.
+3. Write the post in Markdown.
+4. Commit and push. GitHub Pages discovers the post automatically during its Jekyll build.
+
+Example front matter:
+
+```md
+---
+layout: post
+title: "Post Title"
+date: 2026-05-24 03:00:00 +0300
+categories: [linux]
+tags: [linux, bash, troubleshooting]
+excerpt: "One-sentence summary shown on the blog listing."
+---
+```
+
+Local preview is optional. On Windows, WSL is usually the easiest Ruby/Jekyll path:
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+Then open `http://localhost:4000`.
+
+---
+
 ## Professional Summary
 
 Practical and detail-oriented ICT professional with experience in **Python**, **Linux**, **web development**, **electronics repair**, **access control devices**, **customer support**, and **technical troubleshooting**.

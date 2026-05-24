@@ -1,0 +1,7 @@
+{% if include.tags and include.tags.size > 0 %}
+  <ul class="tag-list" aria-label="Tags">
+    {% for tag in include.tags %}
+      <li><a href="{{ '/tags.html' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}

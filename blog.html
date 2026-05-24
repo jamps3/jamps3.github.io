@@ -1,0 +1,25 @@
+---
+layout: default
+title: "Blog"
+permalink: /blog.html
+---
+
+<section class="blog-hero">
+  <p class="eyebrow">Koodinpätkiä / Code Bits</p>
+  <h1>Technical notes, fixes, snippets and experiments</h1>
+  <p>
+    A personal archive of useful code bits, Linux and Windows notes, debugging fixes,
+    web development snippets, and small discoveries.
+  </p>
+</section>
+
+<section class="blog-tools" aria-label="Blog tools">
+  <label for="blog-search">Search posts</label>
+  <input id="blog-search" type="search" placeholder="Search Linux, xrandr, Apache, irssi...">
+</section>
+
+<section class="post-list" id="post-list">
+  {% for post in site.posts %}
+    {% include blog-card.html %}
+  {% endfor %}
+</section>

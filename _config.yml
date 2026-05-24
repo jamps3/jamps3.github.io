@@ -1,0 +1,28 @@
+title: "Koodinpätkiä / Code Bits"
+description: "Short technical notes, fixes, code snippets, Linux/Windows tips, and development experiments by Jan-Erik Labbas."
+url: "https://jamps3.github.io"
+baseurl: ""
+lang: "en-FI"
+timezone: "Europe/Helsinki"
+
+permalink: /blog/:year/:month/:day/:title/
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+excerpt_separator: "<!--more-->"
+
+collections: {}
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: "Jan-Erik Labbas"
+      comments: false

@@ -1,0 +1,26 @@
+---
+layout: default
+title: "Tags"
+permalink: /tags.html
+---
+
+<section class="page-header">
+  <h1>Tags</h1>
+  <p>Browse posts by topic.</p>
+</section>
+
+{% assign sorted_tags = site.tags | sort %}
+
+{% for tag in sorted_tags %}
+  <section class="tag-section" id="{{ tag[0] | slugify }}">
+    <h2>#{{ tag[0] }}</h2>
+    <ul>
+      {% for post in tag[1] %}
+        <li>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endfor %}

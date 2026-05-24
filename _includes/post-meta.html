@@ -1,0 +1,8 @@
+{% assign p = include.post | default: page %}
+<p class="post-meta">
+  <time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: '%Y-%m-%d' }}</time>
+  {% if p.categories and p.categories.size > 0 %}
+    <span aria-hidden="true">&middot;</span>
+    <span>{{ p.categories | join: ', ' }}</span>
+  {% endif %}
+</p>
