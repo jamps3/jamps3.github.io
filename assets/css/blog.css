@@ -157,6 +157,10 @@ p {
   margin-bottom: 0;
 }
 
+.blog-hero-link {
+  color: var(--muted);
+}
+
 .eyebrow,
 .post-kicker {
   margin-bottom: 0.45rem;
