@@ -15,7 +15,7 @@ lang: en
 
 2) Create a small swap file to your Ramdisk, 32-128MB is fine.
 
-3) Move your firefox cache to the Ramdisk, limiting it's size to available space (30MB is fine if you don't have much RAM to spend), check here: <a href="https://www.blogger.com/blogger.g?blogID=3431258800947846876#editor/target=post;postID=4772401399320383032;onPublishedMenu=allposts;onClosedMenu=allposts;postNum=4;src=postname" target="_blank">Set firefox cache location</a>
+3) Move your firefox cache to the Ramdisk, limiting it's size to available space (30MB is fine if you don't have much RAM to spend), check here: [Set firefox cache location]({{ '/blog/2014/04/13/move-set-firefox-cache-location/' | relative_url }})
 
 4) Restart Firefox and check if it creates the temp directory you specified(and monitor that it doesn't grow out of hand!).
 
