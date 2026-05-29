@@ -12,10 +12,10 @@ import os
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton,
     QComboBox, QCheckBox, QMessageBox, QHBoxLayout, QGridLayout,
-    QPlainTextEdit, QFileDialog, QTabWidget, QTextBrowser, QVBoxLayout
+    QPlainTextEdit, QFileDialog, QTabWidget, QTextBrowser, QVBoxLayout,
+    QSizePolicy
 )
 from PyQt6.QtGui import QTextCursor, QFont
-from PyQt6.QtCore import QUrl
 
 
 def slugify(title):
@@ -32,7 +32,7 @@ def get_posts():
     posts_dir = "_posts"
     if not os.path.exists(posts_dir):
         return []
-
+    
     posts = []
     for filename in os.listdir(posts_dir):
         if filename.endswith(".md"):
@@ -45,7 +45,7 @@ def get_posts():
                     'slug': slug_part,
                     'display': f"{date_part} - {slug_part}"
                 })
-
+    
     posts.sort(key=lambda x: x['date'], reverse=True)
     return posts
 
@@ -55,7 +55,7 @@ def parse_post(filepath):
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-
+        
         if content.startswith('---'):
             parts = content.split('---', 2)
             if len(parts) >= 3:
@@ -67,7 +67,7 @@ def parse_post(filepath):
         else:
             front_matter = ""
             post_content = content
-
+        
         front_matter_data = {}
         if front_matter:
             lines = front_matter.strip().split('\n')
@@ -77,12 +77,12 @@ def parse_post(filepath):
                     key, value = line.split(':', 1)
                     key = key.strip()
                     value = value.strip()
-
+                    
                     if value.startswith('"') and value.endswith('"') and len(value) >= 2:
                         value = value[1:-1]
                     elif value.startswith("'") and value.endswith("'") and len(value) >= 2:
                         value = value[1:-1]
-
+                    
                     if value.startswith('[') and value.endswith(']'):
                         array_content = value[1:-1].strip()
                         if array_content:
@@ -99,13 +99,37 @@ def parse_post(filepath):
                             front_matter_data[key] = []
                     else:
                         front_matter_data[key] = value
-
+        
         return front_matter_data, post_content
     except Exception as e:
         return {}, f"Failed to parse post: {str(e)}"
 
 
-def markdown_to_html(md_text):
+def get_all_categories_and_tags():
+    """Get all unique categories and tags from all posts."""
+    posts_dir = "_posts"
+    categories = set()
+    tags = set()
+    
+    if not os.path.exists(posts_dir):
+        return [], []
+    
+    for filename in os.listdir(posts_dir):
+        if filename.endswith(".md"):
+            filepath = os.path.join(posts_dir, filename)
+            front_matter, _ = parse_post(filepath)
+            if front_matter:
+                cats = front_matter.get('categories', [])
+                if isinstance(cats, list):
+                    categories.update(cats)
+                tg = front_matter.get('tags', [])
+                if isinstance(tg, list):
+                    tags.update(tg)
+    
+    return sorted(list(categories)), sorted(list(tags))
+
+
+def markdown_to_html(md_text, cwd=None):
     """Convert basic markdown to HTML for preview."""
     html = md_text
 
@@ -125,12 +149,29 @@ def markdown_to_html(md_text):
     # Inline code
     html = re.sub(r'`([^`]+)`', r'<code>\1</code>', html)
 
-    # Images
-    html = re.sub(
-        r'!\[([^\]]*)\]\(([^)]+)\)',
-        r'<img src="\2" alt="\1" style="max-width:100%;height:auto;">',
-        html
-    )
+    # Images - convert _images/ paths to local file URLs for preview
+    if cwd:
+        def img_replacer(match):
+            alt_text = match.group(1)
+            path = match.group(2)
+            if path.startswith("_images/"):
+                full_path = os.path.join(cwd, path)
+                return f'<img src="file:///{full_path.replace(os.sep, "/")}" alt="{alt_text}" style="max-width:100%;height:auto;">'
+            elif path.startswith("/_images/"):
+                full_path = os.path.join(cwd, path.lstrip("/"))
+                return f'<img src="file:///{full_path.replace(os.sep, "/")}" alt="{alt_text}" style="max-width:100%;height:auto;">'
+            return f'<img src="{path}" alt="{alt_text}" style="max-width:100%;height:auto;">'
+        html = re.sub(
+            r'!\[([^\]]*)\]\(([^)]+)\)',
+            img_replacer,
+            html
+        )
+    else:
+        html = re.sub(
+            r'!\[([^\]]*)\]\(([^)]+)\)',
+            r'<img src="\2" alt="\1" style="max-width:100%;height:auto;">',
+            html
+        )
 
     # Links
     html = re.sub(
@@ -190,72 +231,92 @@ class PostCreator(QWidget):
         main_layout = QGridLayout()
         self.setLayout(main_layout)
 
-        # Row 0 - Title
-        main_layout.addWidget(QLabel("Post Title *:"), 0, 0)
+        # Get all categories and tags from existing posts
+        self.all_categories, self.all_tags = get_all_categories_and_tags()
+
+        # Row 0 - Edit Existing Post
+        main_layout.addWidget(QLabel("Edit Existing Post:"), 0, 0)
+        self.post_combo = QComboBox()
+        self.post_combo.setEditable(False)
+        self.post_combo.setMinimumWidth(600)
+        load_post_btn = QPushButton("Load Post")
+        load_post_btn.clicked.connect(self.load_post)
+        main_layout.addWidget(self.post_combo, 0, 1)
+
+        btn_hbox = QHBoxLayout()
+        btn_hbox.addStretch()
+        load_posts_btn = QPushButton("Load Posts")
+        load_posts_btn.clicked.connect(self.refresh_post_list)
+        btn_hbox.addWidget(load_post_btn)
+        btn_hbox.addWidget(load_posts_btn)
+        main_layout.addLayout(btn_hbox, 0, 2, 1, 2)
+
+        # Row 1 - Title
+        main_layout.addWidget(QLabel("Post Title *:"), 1, 0)
         self.title_entry = QLineEdit()
-        main_layout.addWidget(self.title_entry, 0, 1)
+        main_layout.addWidget(self.title_entry, 1, 1)
 
-        # Row 1 - Categories
-        main_layout.addWidget(QLabel("Categories (comma-separated):"), 1, 0)
-        self.categories_entry = QLineEdit()
-        main_layout.addWidget(self.categories_entry, 1, 1)
+        # Row 2 - Categories and Tags on same row
+        main_layout.addWidget(QLabel("Categories:"), 2, 0)
+        cat_hbox = QHBoxLayout()
+        self.categories_combo = QComboBox()
+        self.categories_combo.setEditable(True)
+        self.categories_combo.setCompleter(None)
+        self.categories_combo.addItems(self.all_categories)
+        add_cat_btn = QPushButton("+")
+        add_cat_btn.setFixedWidth(30)
+        add_cat_btn.clicked.connect(self.add_category)
+        cat_hbox.addWidget(self.categories_combo)
+        cat_hbox.addWidget(add_cat_btn)
 
-        # Row 2 - Tags
-        main_layout.addWidget(QLabel("Tags (comma-separated):"), 2, 0)
-        self.tags_entry = QLineEdit()
-        main_layout.addWidget(self.tags_entry, 2, 1)
+        main_layout.addWidget(QLabel("Tags:"), 2, 2)
+        tags_hbox = QHBoxLayout()
+        self.tags_dropdown = QComboBox()
+        self.tags_dropdown.addItems(self.all_tags)
+        self.tags_dropdown.currentTextChanged.connect(self.add_tag_from_dropdown)
+        self.tags_text = QLineEdit()
+        self.tags_text.setPlaceholderText("Tags will appear here...")
+        tags_hbox.addWidget(self.tags_dropdown)
+        tags_hbox.addWidget(self.tags_text)
+
+        main_layout.addLayout(cat_hbox, 2, 1)
+        main_layout.addLayout(tags_hbox, 2, 3)
 
         # Row 3 - Excerpt
         main_layout.addWidget(QLabel("Excerpt:"), 3, 0)
         self.excerpt_entry = QTextEdit()
         self.excerpt_entry.setMaximumHeight(60)
-        main_layout.addWidget(self.excerpt_entry, 3, 1)
+        main_layout.addWidget(self.excerpt_entry, 3, 1, 1, 3)
 
-        # Row 4 - Original URL
-        main_layout.addWidget(QLabel("Original URL (if migrated):"), 4, 0)
-        self.original_url_entry = QLineEdit()
-        main_layout.addWidget(self.original_url_entry, 4, 1)
-
-        # Row 5 - Language
-        main_layout.addWidget(QLabel("Language Code:"), 5, 0)
-        lang_hbox = QHBoxLayout()
+        # Row 4 - Language Code, Original URL and Migrated checkbox
+        main_layout.addWidget(QLabel("Language Code:"), 4, 0)
+        lang_url_hbox = QHBoxLayout()
         self.lang_entry = QLineEdit()
         self.lang_entry.setMaximumWidth(100)
         self.lang_entry.setText("en")
         en_btn = QPushButton("EN")
+        en_btn.setFixedWidth(36)
         en_btn.clicked.connect(lambda: self.lang_entry.setText("en"))
         fi_btn = QPushButton("FI")
+        fi_btn.setFixedWidth(36)
         fi_btn.clicked.connect(lambda: self.lang_entry.setText("fi"))
-        lang_hbox.addWidget(self.lang_entry)
-        lang_hbox.addWidget(en_btn)
-        lang_hbox.addWidget(fi_btn)
-        lang_hbox.addStretch()
-        main_layout.addLayout(lang_hbox, 5, 1)
+        lang_url_hbox.addWidget(self.lang_entry)
+        lang_url_hbox.addWidget(en_btn)
+        lang_url_hbox.addWidget(fi_btn)
+        lang_url_hbox.addSpacing(30)
 
-        # Row 6 - Migrated checkbox
-        self.migrated_var = False
+        self.original_url_entry = QLineEdit()
+        self.original_url_entry.setPlaceholderText("Original URL (if migrated)...")
+        self.original_url_entry.setMinimumWidth(500)
         self.migrated_cb = QCheckBox("Is this post migrated?")
-        main_layout.addWidget(self.migrated_cb, 6, 0, 1, 2)
+        lang_url_hbox.addWidget(self.original_url_entry)
+        lang_url_hbox.addWidget(self.migrated_cb)
+        lang_url_hbox.addStretch()
+        main_layout.addLayout(lang_url_hbox, 4, 1)
 
-        # Row 7 - Edit Existing Post
-        main_layout.addWidget(QLabel("Edit Existing Post:"), 7, 0)
-        post_hbox = QHBoxLayout()
-        self.post_combo = QComboBox()
-        self.post_combo.setEditable(False)
-        self.post_combo.setMinimumWidth(600)
-        load_posts_btn = QPushButton("Load Posts")
-        load_posts_btn.clicked.connect(self.refresh_post_list)
-        load_post_btn = QPushButton("Load Post")
-        load_post_btn.clicked.connect(self.load_post)
-        post_hbox.addWidget(self.post_combo)
-        post_hbox.addWidget(load_posts_btn)
-        post_hbox.addWidget(load_post_btn)
-        post_hbox.addStretch()
-        main_layout.addLayout(post_hbox, 7, 1)
-
-        # Row 8 - Insert Code Block
+        # Row 5 - Insert Code Block
         code_hbox = QHBoxLayout()
-        main_layout.addWidget(QLabel("Insert Code Block:"), 8, 0)
+        main_layout.addWidget(QLabel("Insert Code Block:"), 5, 0)
         self.language_combo = QComboBox()
         languages = [
             "Text", "Python", "JavaScript", "Bash", "JSON", "HTML", "CSS", "XML",
@@ -269,11 +330,11 @@ class PostCreator(QWidget):
         code_hbox.addWidget(self.language_combo)
         code_hbox.addWidget(add_code_btn)
         code_hbox.addStretch()
-        main_layout.addLayout(code_hbox, 8, 1)
+        main_layout.addLayout(code_hbox, 5, 1, 1, 3)
 
-        # Row 9 - Upload Image
+        # Row 6 - Upload Image
         img_hbox = QHBoxLayout()
-        main_layout.addWidget(QLabel("Upload Image:"), 9, 0)
+        main_layout.addWidget(QLabel("Upload Image:"), 6, 0)
         self.img_path_entry = QLineEdit()
         self.img_path_entry.setReadOnly(True)
         self.img_path_entry.setPlaceholderText("Select an image file...")
@@ -285,10 +346,10 @@ class PostCreator(QWidget):
         img_hbox.addWidget(browse_btn)
         img_hbox.addWidget(upload_img_btn)
         img_hbox.addStretch()
-        main_layout.addLayout(img_hbox, 9, 1)
+        main_layout.addLayout(img_hbox, 6, 1, 1, 3)
 
-        # Row 10 - Post Content (TabWidget with Edit/Preview, takes all remaining space)
-        main_layout.addWidget(QLabel("Post Content:"), 10, 0)
+        # Row 7 - Post Content (takes all remaining space)
+        main_layout.addWidget(QLabel("Post Content:"), 7, 0)
         content_container = QWidget()
         content_layout = QVBoxLayout(content_container)
         content_layout.setContentsMargins(0, 0, 0, 0)
@@ -305,46 +366,48 @@ class PostCreator(QWidget):
         self.content_tabs.addTab(self.preview_browser, "Preview")
 
         content_layout.addWidget(self.content_tabs)
-        main_layout.addWidget(content_container, 10, 1)
+        main_layout.addWidget(content_container, 7, 1, 1, 3)
 
-        # Set column stretch: column 1 gets all extra horizontal space
+        # Column stretch
         main_layout.setColumnStretch(0, 0)
         main_layout.setColumnStretch(1, 1)
+        main_layout.setColumnStretch(2, 0)
+        main_layout.setColumnStretch(3, 1)
 
-        # Set row stretch: row 10 (Post Content) gets all extra vertical space
-        for r in range(11):
+        # Row stretch: row 7 (Post Content) gets all extra vertical space
+        for r in range(8):
             main_layout.setRowStretch(r, 0)
-        main_layout.setRowStretch(10, 1)
+        main_layout.setRowStretch(7, 1)
 
-        # Row 11 - Buttons
+        # Row 8 - Buttons
         btn_hbox = QHBoxLayout()
-        create_btn = QPushButton("Create Post")
+        create_btn = QPushButton("Create/Update Post")
         create_btn.clicked.connect(self.create_post)
         clear_btn = QPushButton("Clear Form")
-        clear_btn.clicked.connect(self.clear_form)
+        clear_btn.clicked.connect(lambda: self.clear_form(True))
         exit_btn = QPushButton("Exit")
         exit_btn.clicked.connect(self.close)
         btn_hbox.addWidget(create_btn)
         btn_hbox.addWidget(clear_btn)
         btn_hbox.addWidget(exit_btn)
         btn_hbox.addStretch()
-        main_layout.addLayout(btn_hbox, 11, 1)
+        main_layout.addLayout(btn_hbox, 8, 1, 1, 3)
 
-        # Row 12 - Info label
+        # Row 9 - Info label
         info_label = QLabel(
-            "* Required fields | Date and time auto-filled | Migrated posts require Original URL | Images copied to _images/"
+            "* Required fields | Date and time auto-filled | Migrated posts require Original URL | Images: /_images/"
         )
         info_label.setStyleSheet("color: gray;")
-        main_layout.addWidget(info_label, 12, 0, 1, 2)
+        main_layout.addWidget(info_label, 9, 0, 1, 4)
 
-        # Row 13 - Log area
-        main_layout.addWidget(QLabel("Log:"), 13, 0)
+        # Row 10 - Log area
+        main_layout.addWidget(QLabel("Log:"), 10, 0)
         self.log_area = QPlainTextEdit()
         self.log_area.setReadOnly(True)
         self.log_area.setMaximumHeight(80)
         log_font = QFont("Consolas", 9)
         self.log_area.setFont(log_font)
-        main_layout.addWidget(self.log_area, 13, 1)
+        main_layout.addWidget(self.log_area, 10, 1, 1, 3)
 
         self.title_entry.setFocus()
 
@@ -360,9 +423,7 @@ class PostCreator(QWidget):
 
     def update_preview(self):
         md_text = self.content_entry.toPlainText()
-        html = markdown_to_html(md_text)
-        base_url = QUrl.fromLocalFile(os.getcwd() + os.sep)
-        self.preview_browser.document().setBaseUrl(base_url)
+        html = markdown_to_html(md_text, os.getcwd())
         self.preview_browser.setHtml(html)
 
     def browse_image(self):
@@ -397,7 +458,7 @@ class PostCreator(QWidget):
 
         try:
             shutil.copy2(file_path, dest_path)
-            rel_path = f"_images/{os.path.basename(dest_path)}"
+            rel_path = f"/_images/{os.path.basename(dest_path)}"
 
             cursor = self.content_entry.textCursor()
             alt_text = os.path.splitext(filename)[0].replace("-", " ").replace("_", " ")
@@ -409,6 +470,29 @@ class PostCreator(QWidget):
             self.img_path_entry.clear()
         except Exception as e:
             self.log_message(f"Failed to copy image: {str(e)}", "ERROR")
+
+    def add_category(self):
+        text = self.categories_combo.currentText().strip()
+        if text:
+            existing = [self.categories_combo.itemText(i) for i in range(self.categories_combo.count())]
+            if text not in existing:
+                self.categories_combo.addItem(text)
+                self.categories_combo.setCurrentText(text)
+                self.log_message(f"Added new category: {text}")
+            else:
+                self.log_message(f"Category already exists: {text}", "WARNING")
+
+    def add_tag_from_dropdown(self, tag):
+        if not tag:
+            return
+        current_tags = self.tags_text.text().strip()
+        tags_list = [t.strip() for t in current_tags.split(",") if t.strip()]
+        if tag not in tags_list:
+            if tags_list:
+                self.tags_text.setText(f"{current_tags}, {tag}")
+            else:
+                self.tags_text.setText(tag)
+            self.log_message(f"Added tag: {tag}")
 
     def refresh_post_list(self):
         self.posts_list = get_posts()
@@ -460,27 +544,30 @@ class PostCreator(QWidget):
         self.title_entry.setText(front_matter.get('title', ''))
         categories = front_matter.get('categories', [])
         if isinstance(categories, list):
-            self.categories_entry.setText(', '.join(categories))
+            self.categories_combo.setEditText(', '.join(categories))
         else:
-            self.categories_entry.setText(str(categories))
+            self.categories_combo.setEditText(str(categories))
 
         tags = front_matter.get('tags', [])
         if isinstance(tags, list):
-            self.tags_entry.setText(', '.join(tags))
+            self.tags_text.setText(', '.join(tags))
         else:
-            self.tags_entry.setText(str(tags))
+            self.tags_text.setText(str(tags))
 
         self.excerpt_entry.setPlainText(front_matter.get('excerpt', ''))
         self.original_url_entry.setText(front_matter.get('original_url', ''))
         self.lang_entry.setText(front_matter.get('lang', 'en'))
-
+        
         migrated_val = front_matter.get('migrated', False)
         if isinstance(migrated_val, str):
             self.migrated_cb.setChecked(migrated_val.lower() in ['true', 'yes', '1'])
         else:
             self.migrated_cb.setChecked(bool(migrated_val))
-
-        self.content_entry.setPlainText(content)
+        
+        # Normalize image paths in content (convert _images/ to /_images/)
+        normalized_content = re.sub(r'!\[([^\]]*)\]\((_images/|/_images/)', r'![\1](/_images/', content)
+        
+        self.content_entry.setPlainText(normalized_content)
         self.current_post_file = filepath
 
         self.log_message(f"Loaded post: {selected_post['filename']}")
@@ -491,8 +578,8 @@ class PostCreator(QWidget):
             self.log_message("Post title is required!", "ERROR")
             return
 
-        categories = self.categories_entry.text().strip()
-        tags = self.tags_entry.text().strip()
+        categories = self.categories_combo.currentText().strip()
+        tags = self.tags_text.text().strip()
         excerpt = self.excerpt_entry.toPlainText().strip()
         original_url = self.original_url_entry.text().strip()
         lang = self.lang_entry.text().strip() or "en"
@@ -526,13 +613,18 @@ class PostCreator(QWidget):
                             date_match = re.search(r'date:\s*"?(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})', front_matter)
                             if date_match:
                                 date_for_field = date_match.group(1) + " +03:00"
-                except:
+                except Exception:
                     pass
 
         filename = f"{date_for_filename}-{slug}.md"
         filepath = os.path.join("_posts", filename)
 
-        if os.path.exists(filepath) and not self.current_post_file:
+        if self.current_post_file:
+            if not QMessageBox.question(self, "Update Post",
+                                      f"Are you sure you want to update this post?\n{filename}",
+                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No) == QMessageBox.StandardButton.Yes:
+                return
+        elif os.path.exists(filepath):
             if not QMessageBox.question(self, "File Exists",
                                       f"The file {filename} already exists. Overwrite?",
                                       QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No) == QMessageBox.StandardButton.Yes:
@@ -583,15 +675,23 @@ class PostCreator(QWidget):
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(lines))
             self.log_message(f"Post saved: {filepath}")
-            self.clear_form()
+            self.clear_form(confirm=False)
             self.current_post_file = None
         except Exception as e:
             self.log_message(f"Failed to create post: {str(e)}", "ERROR")
 
-    def clear_form(self):
+    def clear_form(self, confirm=True):
+        if confirm:
+            reply = QMessageBox.question(
+                self, "Clear Form",
+                "Are you sure you want to clear the form?",
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+            )
+            if reply != QMessageBox.StandardButton.Yes:
+                return
         self.title_entry.clear()
-        self.categories_entry.clear()
-        self.tags_entry.clear()
+        self.categories_combo.setCurrentText("")
+        self.tags_text.clear()
         self.excerpt_entry.clear()
         self.original_url_entry.clear()
         self.lang_entry.setText("en")

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "How to use local User account in Windows 11 Install"
-date: 2026-05-27 15:19:48 +03:00
-updated: 2026-05-27 15:19:48 +03:00
+date: 2026-05-30 01:01:57 +03:00
+updated: 2026-05-30 01:01:57 +03:00
 categories: ["Windows"]
 tags: ["Windows", "Local"]
 excerpt: "Use local User account in Windows 11 Installation."

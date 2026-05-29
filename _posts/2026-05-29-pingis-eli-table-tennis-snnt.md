@@ -12,7 +12,7 @@ migrated: false
 
 # Pingis (Table Tennis)
 
-![Pingis](_images/Pingis-5e04f4fd-9210-4b4d-9d40-56afe1281779.png)
+![Pingis](/_images/Pingis-5e04f4fd-9210-4b4d-9d40-56afe1281779.png)
 
 ## Tavoite
 

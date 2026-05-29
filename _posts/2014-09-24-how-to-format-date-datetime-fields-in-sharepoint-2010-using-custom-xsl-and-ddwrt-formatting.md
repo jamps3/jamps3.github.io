@@ -2,13 +2,13 @@
 layout: post
 title: "How to format Date / DateTime fields in Sharepoint 2010 using custom xsl and ddwrt formatting"
 date: 2014-09-24 15:51:00 +03:00
-updated: 2014-09-24 16:44:37 +03:00
-categories: [sharepoint]
+updated: 2014-09-24 15:51:00 +03:00
+categories: ["sharepoint"]
 tags: ["datetime", "ddwrt", "formatting", "sharepoint", "sharepoint 2010", "xsl"]
 excerpt: "When getting Calendar items, use ddwrt:FormatDate to format Date/Time as your liking: from <xsl:value-of select=\"ddwrt:FormatDate(string(@EventDate),2057,3)\"/> to <xsl:value-of..."
 original_url: "https://koodinpatkia.blogspot.com/2014/09/how-to-format-date-datetime-fields-in.html"
+lang: "en"
 migrated: true
-lang: en
 ---
 
 When getting Calendar items, use ddwrt:FormatDate to format Date/Time as your liking:
@@ -39,4 +39,3 @@ More Links to help you:
 <a href="http://autosponge.wordpress.com/2008/05/09/ddwrt-formatdate-and-formatdatetime/">ddwrt FormatDate and FormatDateTime</a>
 
 <a href="http://shbdev.wordpress.com/2010/06/28/how-to-format-date-value-in-sharepoint-data-view-web-part-xslt/">How to format date value in SharePoint Data View Web Part – xslt</a>
-
