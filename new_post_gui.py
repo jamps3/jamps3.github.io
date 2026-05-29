@@ -138,7 +138,7 @@ def create_post():
 # Create main window
 root = tk.Tk()
 root.title("New Jekyll Post Creator")
-root.geometry("600x700")
+root.geometry("1000x800")
 root.resizable(True, True)
 
 # Create main frame with padding
@@ -183,6 +183,8 @@ original_url_entry = ttk.Entry(main_frame, width=50)
 original_url_entry.grid(row=4, column=1, sticky=(tk.W, tk.E), pady=5)
 
 # Language
+ttk.Button(main_frame, text="EN", width=3, command=lambda: lang_entry.delete(0, tk.END) or lang_entry.insert(0, "en")).grid(row=5, column=2, sticky=tk.W, padx=(5, 0), pady=5)
+ttk.Button(main_frame, text="FI", width=3, command=lambda: lang_entry.delete(0, tk.END) or lang_entry.insert(0, "fi")).grid(row=5, column=3, sticky=tk.W, padx=(5, 0), pady=5)
 ttk.Label(main_frame, text="Language Code:").grid(row=5, column=0, sticky=tk.W, pady=5)
 lang_entry = ttk.Entry(main_frame, width=10)
 lang_entry.grid(row=5, column=1, sticky=tk.W, pady=5)
@@ -200,7 +202,7 @@ content_frame = ttk.Frame(main_frame)
 content_frame.grid(row=7, column=1, sticky=(tk.W, tk.E, tk.N, tk.S), pady=5)
 content_frame.columnconfigure(0, weight=1)
 content_frame.rowconfigure(0, weight=1)
-content_entry = tk.Text(content_frame, width=50, height=10)
+content_entry = tk.Text(content_frame, width=75, height=25)
 content_entry.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 content_scroll = ttk.Scrollbar(content_frame, orient=tk.VERTICAL, command=content_entry.yview)
 content_scroll.grid(row=0, column=1, sticky=(tk.N, tk.S))
