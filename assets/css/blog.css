@@ -251,6 +251,13 @@ p {
 }
 
 .blog-card-body {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.blog-card-body > div:first-child {
   flex: 1;
   min-width: 0;
 }
@@ -440,7 +447,7 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .blog-card {
+  .blog-card-body {
     flex-direction: column;
   }
 
