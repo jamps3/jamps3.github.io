@@ -228,10 +228,34 @@ p {
 }
 
 .blog-card {
+  display: flex;
+  gap: 1rem;
   padding: 1.15rem;
 }
 
-.blog-card h2 {
+.blog-card-thumb {
+  flex-shrink: 0;
+  width: 120px;
+  height: 90px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+}
+
+.blog-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.blog-card-body h2 {
   margin-bottom: 0.4rem;
 }
 
@@ -414,5 +438,14 @@ p {
 
   .post-nav {
     grid-template-columns: 1fr;
+  }
+
+  .blog-card {
+    flex-direction: column;
+  }
+
+  .blog-card-thumb {
+    width: 100%;
+    height: 160px;
   }
 }

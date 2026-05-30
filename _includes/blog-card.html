@@ -6,15 +6,23 @@
   data-source="{% if post.migrated %}migrated{% else %}native{% endif %}"
   data-lang="{{ post.lang | default: site.lang | slice: 0, 2 | downcase }}"
 >
-  <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-  <div class="post-badges" aria-label="Post attributes">
-    {% if post.migrated %}
-      <span class="post-badge">Migrated from Blogger</span>
-    {% endif %}
-    <span class="post-badge">{{ post.lang | default: site.lang | slice: 0, 2 | upcase }}</span>
+  {% assign first_image = post.content | split: '<img src="' | last | split: '"' | first %}
+  {% if first_image contains "/assets/images/" or first_image contains "/_images/" %}
+    <div class="blog-card-thumb">
+      <img src="{{ first_image }}" alt="" loading="lazy">
+    </div>
+  {% endif %}
+  <div class="blog-card-body">
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <div class="post-badges" aria-label="Post attributes">
+      {% if post.migrated %}
+        <span class="post-badge">Migrated from Blogger</span>
+      {% endif %}
+      <span class="post-badge">{{ post.lang | default: site.lang | slice: 0, 2 | upcase }}</span>
+    </div>
+    {% include post-meta.html post=post %}
+    <p>{{ post.excerpt | strip_html | truncate: 220 | escape }}</p>
+    {% include tag-list.html tags=post.tags %}
+    <a class="read-more" href="{{ post.url | relative_url }}">Read post &rarr;</a>
   </div>
-  {% include post-meta.html post=post %}
-  <p>{{ post.excerpt | strip_html | truncate: 220 | escape }}</p>
-  {% include tag-list.html tags=post.tags %}
-  <a class="read-more" href="{{ post.url | relative_url }}">Read post &rarr;</a>
 </article>
