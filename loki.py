@@ -149,11 +149,17 @@ def markdown_to_html(md_text, cwd=None):
     # Inline code
     html = re.sub(r'`([^`]+)`', r'<code>\1</code>', html)
 
-    # Images - convert _images/ paths to local file URLs for preview
+    # Images - convert relative paths to local file URLs for preview
     if cwd:
         def img_replacer(match):
             alt_text = match.group(1)
             path = match.group(2)
+            # Handle /assets/images/ paths
+            if path.startswith("/assets/images/"):
+                rel = path.lstrip("/")
+                full_path = os.path.join(cwd, rel)
+                return f'<img src="file:///{full_path.replace(os.sep, "/")}" alt="{alt_text}" style="max-width:100%;height:auto;">'
+            # Handle _images/ paths (legacy)
             if path.startswith("_images/"):
                 full_path = os.path.join(cwd, path)
                 return f'<img src="file:///{full_path.replace(os.sep, "/")}" alt="{alt_text}" style="max-width:100%;height:auto;">'
@@ -395,7 +401,7 @@ class PostCreator(QWidget):
 
         # Row 9 - Info label
         info_label = QLabel(
-            "* Required fields | Date and time auto-filled | Migrated posts require Original URL | Images: /_images/"
+            "* Required fields | Date and time auto-filled | Migrated posts require Original URL | Images: /assets/images/"
         )
         info_label.setStyleSheet("color: gray;")
         main_layout.addWidget(info_label, 9, 0, 1, 4)
@@ -444,7 +450,7 @@ class PostCreator(QWidget):
             self.log_message("Selected file does not exist!", "ERROR")
             return
 
-        img_dir = "_images"
+        img_dir = "assets/images"
         os.makedirs(img_dir, exist_ok=True)
 
         filename = os.path.basename(file_path)
@@ -458,7 +464,7 @@ class PostCreator(QWidget):
 
         try:
             shutil.copy2(file_path, dest_path)
-            rel_path = f"/_images/{os.path.basename(dest_path)}"
+            rel_path = f"/assets/images/{os.path.basename(dest_path)}"
 
             cursor = self.content_entry.textCursor()
             alt_text = os.path.splitext(filename)[0].replace("-", " ").replace("_", " ")
