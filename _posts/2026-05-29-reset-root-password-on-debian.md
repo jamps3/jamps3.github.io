@@ -12,9 +12,17 @@ migrated: false
 
 If the boot loader isn't locked, after GRUB shows:
 Hit 'e' to edit the boot entry.
-Append ' init=/bin/sh' to the end of the linux line.
+Append this to the end of the linux line:
+```Text
+ init=/bin/sh
+```
 You should then have a '# ' prompt.
 The root filesystem will be mounted read-only.
-Remount the file system in read write mode by entering: mount -o remount,rw /
-(This is not needed?) Unlock the 'root' account: passwd -u root
-Change the 'root' account password: passwd root
+Remount the file system in read write mode by entering:
+```Text
+mount -o remount,rw /
+```
+Change the 'root' account password:
+```Text
+passwd root
+```

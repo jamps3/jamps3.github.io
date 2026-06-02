@@ -333,6 +333,7 @@ class PostCreator(QWidget):
         ]
         self.language_combo.addItems(languages)
         self.language_combo.setCurrentText("Python")
+        self.language_combo.currentIndexChanged.connect(self.restore_content_focus)
         add_code_btn = QPushButton("Add")
         add_code_btn.clicked.connect(self.insert_code_block)
         code_hbox.addWidget(self.language_combo)
@@ -529,6 +530,10 @@ class PostCreator(QWidget):
         cursor.movePosition(QTextCursor.MoveOperation.Up)
         cursor.movePosition(QTextCursor.MoveOperation.StartOfLine)
         self.content_entry.setTextCursor(cursor)
+        self.content_entry.setFocus()
+
+    def restore_content_focus(self):
+        self.content_entry.setFocus()
 
     def on_post_selected(self, index):
         if index < 0 or index >= len(self.posts_list):

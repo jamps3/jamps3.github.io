@@ -12,11 +12,19 @@ migrated: true
 ---
 
 You need to enable NTLM Configuration within FireFox. It is very simple to do and should solve your problem:
+Open Firefox and type
 ```Text
-Open Firefox and type “about:config” in the address bar. (without the quotes of course)
-In the ‘Filter’ field type the following “network.automatic-ntlm-auth.trusted-uris”
+about:config
+```
+in the address bar.
+
+In the ‘Filter’ field type the following
+```Text
+network.automatic-ntlm-auth.trusted-uris
+```
 Double click the name of the preference that we just searched for
 Enter the URLs of the sites you wish to pass NTLM auth info to in the form of:
+```Text
 http://intranet.company.com,http://email.company.lan
-Notice that you can use a comma separated list in this field.
 ```
+Notice that you can use a comma separated list in this field.
