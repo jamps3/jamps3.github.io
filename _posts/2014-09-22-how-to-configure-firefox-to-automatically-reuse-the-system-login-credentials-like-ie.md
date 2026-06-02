@@ -16,9 +16,7 @@ Open Firefox and type
 ```Text
 about:config
 ```
-in the address bar.
-
-In the ‘Filter’ field type the following
+in the address bar. In the ‘Filter’ field type the following
 ```Text
 network.automatic-ntlm-auth.trusted-uris
 ```
