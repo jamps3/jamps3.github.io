@@ -246,16 +246,17 @@ class PostCreator(QWidget):
         self.post_combo = QComboBox()
         self.post_combo.setEditable(False)
         self.post_combo.setMinimumWidth(600)
-        load_post_btn = QPushButton("Load Post")
-        load_post_btn.clicked.connect(self.load_post)
+        self.post_combo.currentIndexChanged.connect(self.on_post_selected)
         main_layout.addWidget(self.post_combo, 0, 1)
 
         btn_hbox = QHBoxLayout()
         btn_hbox.addStretch()
         load_posts_btn = QPushButton("Load Posts")
         load_posts_btn.clicked.connect(self.refresh_post_list)
-        btn_hbox.addWidget(load_post_btn)
+        delete_post_btn = QPushButton("Delete Post")
+        delete_post_btn.clicked.connect(self.delete_post)
         btn_hbox.addWidget(load_posts_btn)
+        btn_hbox.addWidget(delete_post_btn)
         main_layout.addLayout(btn_hbox, 0, 2, 1, 2)
 
         # Row 1 - Title
@@ -529,6 +530,11 @@ class PostCreator(QWidget):
         cursor.movePosition(QTextCursor.MoveOperation.StartOfLine)
         self.content_entry.setTextCursor(cursor)
 
+    def on_post_selected(self, index):
+        if index < 0 or index >= len(self.posts_list):
+            return
+        self.load_post()
+
     def load_post(self):
         selection = self.post_combo.currentText()
         if not selection:
@@ -749,6 +755,46 @@ class PostCreator(QWidget):
             self.log_message(f"Git command failed: {error_text}", "ERROR")
         except Exception as e:
             self.log_message(f"Git failed: {str(e)}", "ERROR")
+
+    def delete_post(self):
+        selection = self.post_combo.currentText()
+        if not selection:
+            self.log_message("Please select a post to delete!", "WARNING")
+            return
+
+        selected_post = None
+        for post in self.posts_list:
+            if post['display'] == selection:
+                selected_post = post
+                break
+
+        if not selected_post:
+            self.log_message("Selected post not found!", "ERROR")
+            return
+
+        filepath = os.path.join("_posts", selected_post['filename'])
+        if not os.path.exists(filepath):
+            self.log_message(f"Post file does not exist: {filepath}", "ERROR")
+            return
+
+        confirm = QMessageBox.question(
+            self, "Delete Post",
+            f"Are you sure you want to delete this post?\n{selected_post['filename']}",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        )
+        if confirm != QMessageBox.StandardButton.Yes:
+            self.log_message("Delete canceled.", "INFO")
+            return
+
+        try:
+            os.remove(filepath)
+            self.log_message(f"Deleted post: {selected_post['filename']}")
+            if self.current_post_file == filepath:
+                self.clear_form(confirm=False)
+                self.current_post_file = None
+            self.refresh_post_list()
+        except Exception as e:
+            self.log_message(f"Failed to delete post: {str(e)}", "ERROR")
 
 
 if __name__ == "__main__":
