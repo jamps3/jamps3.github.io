@@ -6,14 +6,15 @@ loki.py - A GUI tool to create new Jekyll posts with prompted metadata.
 import sys
 import re
 import shutil
+import subprocess
 from datetime import datetime
 import os
 
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton,
     QComboBox, QCheckBox, QMessageBox, QHBoxLayout, QGridLayout,
-    QPlainTextEdit, QFileDialog, QTabWidget, QTextBrowser, QVBoxLayout,
-    QSizePolicy
+    QInputDialog, QPlainTextEdit, QFileDialog, QTabWidget, QTextBrowser,
+    QVBoxLayout, QSizePolicy
 )
 from PyQt6.QtGui import QTextCursor, QFont
 
@@ -389,11 +390,14 @@ class PostCreator(QWidget):
         btn_hbox = QHBoxLayout()
         create_btn = QPushButton("Create/Update Post")
         create_btn.clicked.connect(self.create_post)
+        git_btn = QPushButton("Git Commit & Push")
+        git_btn.clicked.connect(self.git_commit_push)
         clear_btn = QPushButton("Clear Form")
         clear_btn.clicked.connect(lambda: self.clear_form(True))
         exit_btn = QPushButton("Exit")
         exit_btn.clicked.connect(self.close)
         btn_hbox.addWidget(create_btn)
+        btn_hbox.addWidget(git_btn)
         btn_hbox.addWidget(clear_btn)
         btn_hbox.addWidget(exit_btn)
         btn_hbox.addStretch()
@@ -704,6 +708,47 @@ class PostCreator(QWidget):
         self.migrated_cb.setChecked(False)
         self.content_entry.clear()
         self.title_entry.setFocus()
+
+    def git_commit_push(self):
+        repo_dir = os.getcwd()
+        if not os.path.isdir(os.path.join(repo_dir, ".git")):
+            self.log_message("This directory is not a git repository.", "ERROR")
+            return
+
+        status = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=repo_dir,
+            capture_output=True,
+            text=True
+        )
+        if status.returncode != 0:
+            self.log_message(f"Git status failed: {status.stderr.strip()}", "ERROR")
+            return
+
+        if not status.stdout.strip():
+            self.log_message("No changes to commit.", "WARNING")
+            return
+
+        message, ok = QInputDialog.getText(
+            self, "Git Commit Message", "Commit message:", text="Update Jekyll posts"
+        )
+        if not ok or not message.strip():
+            self.log_message("Git commit canceled or empty commit message.", "WARNING")
+            return
+
+        try:
+            self.log_message("Staging changes...")
+            subprocess.run(["git", "add", "."], cwd=repo_dir, check=True, capture_output=True, text=True)
+            self.log_message("Creating commit...")
+            subprocess.run(["git", "commit", "-m", message.strip()], cwd=repo_dir, check=True, capture_output=True, text=True)
+            self.log_message("Pushing to remote...")
+            subprocess.run(["git", "push"], cwd=repo_dir, check=True, capture_output=True, text=True)
+            self.log_message("Git commit and push completed.")
+        except subprocess.CalledProcessError as e:
+            error_text = e.stderr.strip() if e.stderr else e.stdout.strip()
+            self.log_message(f"Git command failed: {error_text}", "ERROR")
+        except Exception as e:
+            self.log_message(f"Git failed: {str(e)}", "ERROR")
 
 
 if __name__ == "__main__":
