@@ -615,12 +615,13 @@ class PostCreator(QWidget):
         date_for_filename = now.strftime("%Y-%m-%d")
         date_for_field = now.strftime("%Y-%m-%d %H:%M:%S") + " +03:00"
 
-        if self.current_post_file:
-            filename = os.path.basename(self.current_post_file)
+        old_filepath = self.current_post_file
+        if old_filepath:
+            filename = os.path.basename(old_filepath)
             if len(filename) >= 10 and filename[4] == '-' and filename[7] == '-':
                 date_for_filename = filename[:10]
                 try:
-                    with open(self.current_post_file, 'r', encoding='utf-8') as f:
+                    with open(old_filepath, 'r', encoding='utf-8') as f:
                         file_content = f.read()
                     if file_content.startswith('---'):
                         parts = file_content.split('---', 2)
@@ -635,11 +636,27 @@ class PostCreator(QWidget):
         filename = f"{date_for_filename}-{slug}.md"
         filepath = os.path.join("_posts", filename)
 
-        if self.current_post_file:
-            if not QMessageBox.question(self, "Update Post",
-                                      f"Are you sure you want to update this post?\n{filename}",
-                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No) == QMessageBox.StandardButton.Yes:
-                return
+        if old_filepath:
+            existing_file = os.path.exists(filepath)
+            new_name = os.path.basename(filepath)
+            old_name = os.path.basename(old_filepath)
+            if filepath != old_filepath:
+                if existing_file:
+                    if not QMessageBox.question(self, "File Exists",
+                                              f"The file {new_name} already exists. Overwrite?",
+                                              QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No) == QMessageBox.StandardButton.Yes:
+                        return
+                if not QMessageBox.question(self, "Rename Post",
+                                          f"The title/URL changed from {old_name} to {new_name}.\nSave as the new filename and delete the old post?",
+                                          QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No) == QMessageBox.StandardButton.Yes:
+                    pass
+                else:
+                    return
+            else:
+                if not QMessageBox.question(self, "Update Post",
+                                          f"Are you sure you want to update this post?\n{filename}",
+                                          QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No) == QMessageBox.StandardButton.Yes:
+                    return
         elif os.path.exists(filepath):
             if not QMessageBox.question(self, "File Exists",
                                       f"The file {filename} already exists. Overwrite?",
@@ -691,6 +708,12 @@ class PostCreator(QWidget):
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(lines))
             self.log_message(f"Post saved: {filepath}")
+            if old_filepath and old_filepath != filepath and os.path.exists(old_filepath):
+                try:
+                    os.remove(old_filepath)
+                    self.log_message(f"Deleted old post file: {old_filepath}")
+                except Exception as cleanup_err:
+                    self.log_message(f"Saved new post but failed to delete old file: {cleanup_err}", "WARNING")
             self.clear_form(confirm=False)
             self.current_post_file = None
         except Exception as e:
