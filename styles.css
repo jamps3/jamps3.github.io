@@ -810,7 +810,7 @@ ul {
   position: relative;
   width: 100%;
   margin-top: 1.5rem;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid var(--border);
   border-radius: 22px;
   background:
@@ -867,6 +867,7 @@ ul {
 }
 
 .portfolio-page .carousel-control {
+  position: relative;
   width: 2.15rem;
   height: 1.5rem;
   padding: 0;
@@ -881,10 +882,42 @@ ul {
     transform 0.2s ease;
 }
 
+.portfolio-page .carousel-control::after {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.55rem);
+  width: max-content;
+  max-width: min(14rem, 80vw);
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-strong);
+  color: var(--text);
+  content: attr(data-title);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  transform: translate(-50%, 0.2rem);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  white-space: normal;
+  z-index: 4;
+}
+
 .portfolio-page .carousel-control:hover,
 .portfolio-page .carousel-control:focus {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.78);
+}
+
+.portfolio-page .carousel-control:hover::after,
+.portfolio-page .carousel-control:focus::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .portfolio-page .carousel-control.active,

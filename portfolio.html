@@ -105,7 +105,10 @@
         <div class="carousel-viewport">
           <div class="carousel-slides">
             <div class="carousel-slide">
-              <img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" fetchpriority="high" />
+              <img src="img/soumari-screenshot.png" alt="Soumari screenshot" fetchpriority="high" />
+            </div>
+            <div class="carousel-slide">
+              <img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" loading="lazy" decoding="async" />
             </div>
             <div class="carousel-slide">
               <img src="img/leetircpythonbot-screenshot.png" alt="LeetIRCPythonBot screenshot" loading="lazy" decoding="async" />
@@ -120,24 +123,21 @@
               <img src="img/jampsfit-screenshot.png" alt="jampsFit screenshot" loading="lazy" decoding="async" />
             </div>
             <div class="carousel-slide">
-              <img src="img/soumari-screenshot.png" alt="Soumari screenshot" loading="lazy" decoding="async" />
-            </div>
-            <div class="carousel-slide">
               <img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
 
-        <h2 class="carousel-title">GDriveLink</h2>
+        <h2 class="carousel-title">Soumari</h2>
 
         <div class="carousel-controls" aria-label="Carousel controls">
-          <button class="carousel-control active" type="button" data-slide="0" aria-label="Show GDriveLink screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="1" aria-label="Show LeetIRCPythonBot screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="2" aria-label="Show Quantifile screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="3" aria-label="Show SpiralFM screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="4" aria-label="Show jampsFit screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="5" aria-label="Show Soumari screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="6" aria-label="Show Leet Clock screenshot"></button>
+          <button class="carousel-control active" type="button" data-slide="0" data-title="Soumari" aria-label="Show Soumari screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="1" data-title="GDriveLink" aria-label="Show GDriveLink screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="2" data-title="LeetIRCPythonBot" aria-label="Show LeetIRCPythonBot screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="3" data-title="Quantifile" aria-label="Show Quantifile screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="4" data-title="SpiralFM" aria-label="Show SpiralFM screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="5" data-title="jampsFit" aria-label="Show jampsFit screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="6" data-title="Leet Clock" aria-label="Show Leet Clock screenshot"></button>
         </div>
       </div>
     </header>
@@ -676,7 +676,7 @@
 
     const slides = document.querySelector(".carousel-slides");
     const controls = document.querySelectorAll(".carousel-control");
-    const titles = ["GDriveLink", "LeetIRCPythonBot", "Quantifile", "SpiralFM", "jampsFit", "Soumari", "Leet Clock"];
+    const titles = ["Soumari", "GDriveLink", "LeetIRCPythonBot", "Quantifile", "SpiralFM", "jampsFit", "Leet Clock"];
     let currentSlide = 0;
     let carouselTimerId = null;
     const defaultSlideDelay = 5000;
