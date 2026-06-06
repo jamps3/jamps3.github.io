@@ -678,6 +678,9 @@
     const controls = document.querySelectorAll(".carousel-control");
     const titles = ["GDriveLink", "LeetIRCPythonBot", "Quantifile", "SpiralFM", "jampsFit", "Soumari", "Leet Clock"];
     let currentSlide = 0;
+    let carouselTimerId = null;
+    const defaultSlideDelay = 5000;
+    const manualSlideDelay = 10000;
 
     function updateCarousel() {
       slides.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -691,23 +694,27 @@
       document.querySelector(".carousel-title").textContent = titles[currentSlide];
     }
 
+    function scheduleNextSlide(delay = defaultSlideDelay) {
+      if (prefersReducedMotion) return;
+
+      window.clearTimeout(carouselTimerId);
+      carouselTimerId = window.setTimeout(() => {
+        currentSlide = (currentSlide + 1) % controls.length;
+        updateCarousel();
+        scheduleNextSlide();
+      }, delay);
+    }
+
     controls.forEach((control, index) => {
       control.addEventListener("click", () => {
         currentSlide = index;
         updateCarousel();
+        scheduleNextSlide(manualSlideDelay);
       });
     });
 
     updateCarousel();
-
-    updateCarousel();
-
-    if (!prefersReducedMotion) {
-      setInterval(() => {
-        currentSlide = (currentSlide + 1) % controls.length;
-        updateCarousel();
-      }, 5000);
-    }
+    scheduleNextSlide();
 
     if ("IntersectionObserver" in window && !prefersReducedMotion) {
       const observer = new IntersectionObserver((entries) => {
