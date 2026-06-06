@@ -114,6 +114,12 @@
               <img src="img/quantifile-screenshot.png" alt="Quantifile screenshot" loading="lazy" decoding="async" />
             </div>
             <div class="carousel-slide">
+              <img src="img/spiralfm-screenshot.png" alt="SpiralFM screenshot" loading="lazy" decoding="async" />
+            </div>
+            <div class="carousel-slide">
+              <img src="img/jampsfit-screenshot.png" alt="jampsFit screenshot" loading="lazy" decoding="async" />
+            </div>
+            <div class="carousel-slide">
               <img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" loading="lazy" decoding="async" />
             </div>
           </div>
@@ -125,7 +131,9 @@
           <button class="carousel-control active" type="button" data-slide="0" aria-label="Show GDriveLink screenshot"></button>
           <button class="carousel-control" type="button" data-slide="1" aria-label="Show LeetIRCPythonBot screenshot"></button>
           <button class="carousel-control" type="button" data-slide="2" aria-label="Show Quantifile screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="3" aria-label="Show Leet Clock screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="3" aria-label="Show SpiralFM screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="4" aria-label="Show jampsFit screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="5" aria-label="Show Leet Clock screenshot"></button>
         </div>
       </div>
     </header>
@@ -305,17 +313,21 @@
         </article>
 
         <article class="portfolio-card">
-          <h3>Cross-platform 3D File Manager</h3>
+          <h3>SpiralFM</h3>
+
+          <img src="img/spiralfm-screenshot.png" alt="SpiralFM screenshot" class="portfolio-card-image" width="300" loading="lazy" decoding="async" />
 
           <p class="project-impact">
-            Exploration of more visual file navigation using a 3D spiral interface.
+            Spatial file manager prototype combining 3D navigation with practical file operations.
           </p>
 
           <p>
-            Python / PyQt / Qt3D project exploring a spiral-based 3D file navigation interface for browsing files and folders.
+            Rust / Bevy spatial file manager prototype. Its 3D spiral supports hierarchy,
+            orientation, favorites, and navigation, while conventional 2D panels handle
+            precise file work.
           </p>
 
-          <p class="tech-stack">Python · PyQt · Qt3D · GUI design · File systems</p>
+          <p class="tech-stack">Rust · Bevy · egui · 3D UI · File systems · Desktop app</p>
         </article>
 
         <article class="portfolio-card">
@@ -396,6 +408,28 @@
       <h2>Android Projects</h2>
 
       <div class="portfolio-projects">
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/jampsFit" target="_blank" rel="noopener noreferrer">
+              jampsFit
+            </a>
+          </h3>
+
+          <img src="img/jampsfit-screenshot.png" alt="jampsFit screenshot" class="portfolio-card-image" width="300" loading="lazy" decoding="async" />
+
+          <p class="project-impact">
+            Android companion app and BLE protocol research tool for the Kospet TANK M1 smartwatch.
+          </p>
+
+          <p>
+            jampsFit combines a live health dashboard with protocol reverse-engineering tools:
+            battery, activity, steps, sleep decoding, heart rate, SpO2, graphs, watch controls,
+            notification mirroring, raw packet logs, and unknown-packet capture.
+          </p>
+
+          <p class="tech-stack">Android · Kotlin · Jetpack Compose · Room · BLE / GATT · Protocol reverse engineering</p>
+        </article>
+
         <article class="portfolio-card">
           <h3>Gamified Android Productivity App</h3>
 
@@ -570,7 +604,7 @@
 
     const slides = document.querySelector(".carousel-slides");
     const controls = document.querySelectorAll(".carousel-control");
-    const titles = ["GDriveLink", "LeetIRCPythonBot", "Quantifile", "Leet Clock"];
+    const titles = ["GDriveLink", "LeetIRCPythonBot", "Quantifile", "SpiralFM", "jampsFit", "Leet Clock"];
     let currentSlide = 0;
 
     function updateCarousel() {
