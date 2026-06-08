@@ -72,6 +72,14 @@
     </button>
   </div>
 
+  <div class="border-color-picker" aria-label="Choose border color">
+    <button type="button" data-border-color="#4ea1ff" style="--swatch-color: #4ea1ff" aria-label="Blue border"></button>
+    <button type="button" data-border-color="#48d17a" style="--swatch-color: #48d17a" aria-label="Green border"></button>
+    <button type="button" data-border-color="#ffd166" style="--swatch-color: #ffd166" aria-label="Gold border"></button>
+    <button type="button" data-border-color="#ff7ab6" style="--swatch-color: #ff7ab6" aria-label="Pink border"></button>
+    <button type="button" data-border-color="" style="--swatch-color: var(--border)" aria-label="Default border"></button>
+  </div>
+
   <main class="cv-container">
     <nav class="nav-menu">
       <a href="index.html">CV</a>
@@ -126,6 +134,9 @@
               <img src="img/sleep-timer-screenshot.png" alt="Sleep-Timer screenshot" loading="lazy" decoding="async" />
             </div>
             <div class="carousel-slide">
+              <img src="https://github.com/jamps3/ASCII-Mandala/raw/master/screenshot.png" alt="ASCII-Mandala screenshot" loading="lazy" decoding="async" />
+            </div>
+            <div class="carousel-slide">
               <img src="https://github.com/jamps3/leet-clock/raw/main/screenshot.png" alt="Leet Clock screenshot" loading="lazy" decoding="async" />
             </div>
           </div>
@@ -141,7 +152,8 @@
           <button class="carousel-control" type="button" data-slide="4" data-title="SpiralFM" aria-label="Show SpiralFM screenshot"></button>
           <button class="carousel-control" type="button" data-slide="5" data-title="jampsFit" aria-label="Show jampsFit screenshot"></button>
           <button class="carousel-control" type="button" data-slide="6" data-title="Sleep-Timer" aria-label="Show Sleep-Timer screenshot"></button>
-          <button class="carousel-control" type="button" data-slide="7" data-title="Leet Clock" aria-label="Show Leet Clock screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="7" data-title="ASCII-Mandala" aria-label="Show ASCII-Mandala screenshot"></button>
+          <button class="carousel-control" type="button" data-slide="8" data-title="Leet Clock" aria-label="Show Leet Clock screenshot"></button>
         </div>
       </div>
     </header>
@@ -264,6 +276,26 @@
           </p>
 
           <p class="tech-stack">SVG · JavaScript · UI design · Time systems</p>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>
+            <a href="https://github.com/jamps3/ASCII-Mandala" target="_blank" rel="noopener noreferrer">
+              ASCII-Mandala
+            </a>
+          </h3>
+
+          <img src="https://github.com/jamps3/ASCII-Mandala/raw/master/screenshot.png" alt="ASCII-Mandala screenshot" class="portfolio-card-image" width="300" loading="lazy" decoding="async" />
+
+          <p class="project-impact">
+            Generative ASCII art experiment focused on radial mandala patterns.
+          </p>
+
+          <p>
+            Public creative coding project for producing symmetric mandala-style artwork with text characters, blending terminal aesthetics with procedural pattern generation.
+          </p>
+
+          <p class="tech-stack">ASCII art · Generative art · Creative coding · Pattern generation</p>
         </article>
 
         <article class="portfolio-card">
@@ -671,6 +703,27 @@
       document.body.classList.add("light-theme");
     }
 
+    function setBorderColor(color) {
+      document.documentElement.style.setProperty("--chosen-border", color || "var(--border)");
+      document.body.style.setProperty("--chosen-border", color || "var(--border)");
+      document.querySelectorAll(".border-color-picker button").forEach((button) => {
+        const isActive = button.dataset.borderColor === color;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    const savedBorderColor = localStorage.getItem("borderColor") || "";
+    setBorderColor(savedBorderColor);
+
+    document.querySelectorAll(".border-color-picker button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const color = button.dataset.borderColor;
+        setBorderColor(color);
+        localStorage.setItem("borderColor", color);
+      });
+    });
+
     themeToggle.addEventListener("click", () => {
       document.body.classList.toggle("light-theme");
 
@@ -680,7 +733,7 @@
 
     const slides = document.querySelector(".carousel-slides");
     const controls = document.querySelectorAll(".carousel-control");
-    const titles = ["Soumari", "GDriveLink", "LeetIRCPythonBot", "Quantifile", "SpiralFM", "jampsFit", "Sleep-Timer", "Leet Clock"];
+    const titles = ["Soumari", "GDriveLink", "LeetIRCPythonBot", "Quantifile", "SpiralFM", "jampsFit", "Sleep-Timer", "ASCII-Mandala", "Leet Clock"];
     let currentSlide = 0;
     let carouselTimerId = null;
     const defaultSlideDelay = 5000;

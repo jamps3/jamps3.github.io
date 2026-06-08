@@ -21,6 +21,14 @@
     </button>
   </div>
 
+  <div class="border-color-picker" aria-label="Choose border color">
+    <button type="button" data-border-color="#4ea1ff" style="--swatch-color: #4ea1ff" aria-label="Blue border"></button>
+    <button type="button" data-border-color="#48d17a" style="--swatch-color: #48d17a" aria-label="Green border"></button>
+    <button type="button" data-border-color="#ffd166" style="--swatch-color: #ffd166" aria-label="Gold border"></button>
+    <button type="button" data-border-color="#ff7ab6" style="--swatch-color: #ff7ab6" aria-label="Pink border"></button>
+    <button type="button" data-border-color="" style="--swatch-color: var(--border)" aria-label="Default border"></button>
+  </div>
+
   <main class="cv-container">
     <nav class="nav-menu">
       <a href="portfolio.html">Portfolio</a>
@@ -348,6 +356,19 @@
 
         <article class="project-card">
           <h3>
+            <a href="https://github.com/jamps3/ASCII-Mandala">
+              ASCII-Mandala
+            </a>
+          </h3>
+          <p>
+            Public creative coding project for generating mandala-style ASCII artwork,
+            combining procedural pattern generation with a terminal-art aesthetic.
+          </p>
+          <p class="tech-stack">ASCII art · Generative art · Creative coding · Pattern generation</p>
+        </article>
+
+        <article class="project-card">
+          <h3>
             <a href="https://github.com/jamps3/LeetIRCPythonBot">
               LeetIRCPythonBot
             </a>
@@ -551,6 +572,27 @@
     if (savedTheme === "light") {
       document.body.classList.add("light-theme");
     }
+
+    function setBorderColor(color) {
+      document.documentElement.style.setProperty("--chosen-border", color || "var(--border)");
+      document.body.style.setProperty("--chosen-border", color || "var(--border)");
+      document.querySelectorAll(".border-color-picker button").forEach((button) => {
+        const isActive = button.dataset.borderColor === color;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    const savedBorderColor = localStorage.getItem("borderColor") || "";
+    setBorderColor(savedBorderColor);
+
+    document.querySelectorAll(".border-color-picker button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const color = button.dataset.borderColor;
+        setBorderColor(color);
+        localStorage.setItem("borderColor", color);
+      });
+    });
 
     function toggleTheme() {
       document.body.classList.toggle("light-theme");
