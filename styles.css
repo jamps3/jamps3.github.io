@@ -26,12 +26,12 @@ body.light-theme {
   --surface-strong: #f7f9fc;
   --text: #1e2430;
   --muted: #5f6b7a;
-  --border: #dce2ea;
+  --border: #aeb8c5;
   --chosen-border: var(--border);
   --accent: #006fd6;
   --accent-strong: #005fc0;
   --chip-bg: #eef4fb;
-  --chip-border: #d7e4f3;
+  --chip-border: #aeb8c5;
   --shadow: 0 18px 45px rgba(18, 38, 63, 0.08);
 
   color-scheme: light;
