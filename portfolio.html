@@ -77,6 +77,7 @@
     <button type="button" data-border-color="#48d17a" style="--swatch-color: #48d17a" aria-label="Green border"></button>
     <button type="button" data-border-color="#ffd166" style="--swatch-color: #ffd166" aria-label="Gold border"></button>
     <button type="button" data-border-color="#ff7ab6" style="--swatch-color: #ff7ab6" aria-label="Pink border"></button>
+    <button type="button" data-border-color="gradient" class="gradient-swatch" aria-label="Gradient border"></button>
     <button type="button" data-border-color="" style="--swatch-color: var(--border)" aria-label="Default border"></button>
   </div>
 
@@ -157,6 +158,120 @@
         </div>
       </div>
     </header>
+
+    <section class="section case-studies-section" aria-labelledby="featured-case-studies">
+      <h2 id="featured-case-studies">Featured Case Studies</h2>
+
+      <div class="case-study-list">
+        <article class="case-study-card">
+          <div class="case-study-content">
+            <p class="case-study-kicker">Python desktop utility</p>
+            <h3>
+              <a href="https://github.com/jamps3/GDriveLink" target="_blank" rel="noopener noreferrer">
+                GDriveLink
+              </a>
+            </h3>
+
+            <dl class="case-study-points">
+              <div>
+                <dt>Problem</dt>
+                <dd>Sharing local files and copied screenshots through Google Drive involved repetitive upload, permission, and copy-link steps.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>A desktop workflow for drag-and-drop uploads, clipboard image previews, Google Drive sharing, and quick link generation.</dd>
+              </div>
+              <div>
+                <dt>Tech</dt>
+                <dd>Python · Google Drive API · Desktop GUI · Automation · File sharing</dd>
+              </div>
+              <div>
+                <dt>Result</dt>
+                <dd>A focused utility that turns files and clipboard images into shareable Drive links without switching through repeated browser steps.</dd>
+              </div>
+            </dl>
+
+            <a class="case-study-link" href="https://github.com/jamps3/GDriveLink" target="_blank" rel="noopener noreferrer">
+              View repository
+            </a>
+          </div>
+
+          <img src="img/gdrivelink-screenshot.png" alt="GDriveLink screenshot" class="case-study-image" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="case-study-card">
+          <div class="case-study-content">
+            <p class="case-study-kicker">File system visualization</p>
+            <h3>
+              <a href="https://github.com/jamps3/Quantifile" target="_blank" rel="noopener noreferrer">
+                Quantifile
+              </a>
+            </h3>
+
+            <dl class="case-study-points">
+              <div>
+                <dt>Problem</dt>
+                <dd>Disk usage is hard to understand from folder lists alone, especially when large files are buried deep in nested directories.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>An interactive treemap scanner with recursive directory analysis, background processing, zooming, search, filtering, context menus, and SVG export.</dd>
+              </div>
+              <div>
+                <dt>Tech</dt>
+                <dd>Python · Tkinter · File systems · Treemap visualization · Background scanning · SVG export</dd>
+              </div>
+              <div>
+                <dt>Result</dt>
+                <dd>A standalone Windows-friendly tool for finding large files visually while handling inaccessible folders without interrupting the scan.</dd>
+              </div>
+            </dl>
+
+            <a class="case-study-link" href="https://github.com/jamps3/Quantifile" target="_blank" rel="noopener noreferrer">
+              View repository
+            </a>
+          </div>
+
+          <img src="img/quantifile-screenshot.png" alt="Quantifile screenshot" class="case-study-image" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="case-study-card">
+          <div class="case-study-content">
+            <p class="case-study-kicker">Automation and integrations</p>
+            <h3>
+              <a href="https://github.com/jamps3/LeetIRCPythonBot" target="_blank" rel="noopener noreferrer">
+                LeetIRCPythonBot
+              </a>
+            </h3>
+
+            <dl class="case-study-points">
+              <div>
+                <dt>Problem</dt>
+                <dd>IRC channels benefit from practical real-time information tools, but one-off scripts become difficult to extend and maintain.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>A modular Python IRC bot with command handling, automation features, and API integrations for weather, warnings, electricity price data, and other utilities.</dd>
+              </div>
+              <div>
+                <dt>Tech</dt>
+                <dd>Python · IRC · APIs · Automation · Linux</dd>
+              </div>
+              <div>
+                <dt>Result</dt>
+                <dd>A reusable bot foundation where new commands and external data sources can be added without turning the project into a single hard-coded script.</dd>
+              </div>
+            </dl>
+
+            <a class="case-study-link" href="https://github.com/jamps3/LeetIRCPythonBot" target="_blank" rel="noopener noreferrer">
+              View repository
+            </a>
+          </div>
+
+          <img src="img/leetircpythonbot-screenshot.png" alt="LeetIRCPythonBot screenshot" class="case-study-image" loading="lazy" decoding="async" />
+        </article>
+      </div>
+    </section>
 
     <section class="section">
       <h2>Technical Focus</h2>
@@ -704,8 +819,11 @@
     }
 
     function setBorderColor(color) {
-      document.documentElement.style.setProperty("--chosen-border", color || "var(--border)");
-      document.body.style.setProperty("--chosen-border", color || "var(--border)");
+      const isGradient = color === "gradient";
+      document.documentElement.style.setProperty("--chosen-border", isGradient ? "transparent" : color || "var(--border)");
+      document.documentElement.style.setProperty("--border-image", isGradient ? "conic-gradient(from var(--gradient-angle), #4ea1ff, #8b5cf6, #ec4899, #4ea1ff)" : "none");
+      document.body.style.setProperty("--chosen-border", isGradient ? "transparent" : color || "var(--border)");
+      document.body.classList.toggle("gradient-border", isGradient);
       document.querySelectorAll(".border-color-picker button").forEach((button) => {
         const isActive = button.dataset.borderColor === color;
         button.classList.toggle("active", isActive);
@@ -830,7 +948,7 @@
       modalImg.alt = img.alt || "Full size preview";
     }
 
-    document.querySelectorAll(".carousel-slide img, .portfolio-card img").forEach((img) => {
+    document.querySelectorAll(".carousel-slide img, .portfolio-card img, .case-study-image").forEach((img) => {
       img.addEventListener("click", () => openModal(img));
       img.tabIndex = 0;
       img.setAttribute("role", "button");

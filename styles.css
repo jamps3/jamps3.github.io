@@ -6,6 +6,8 @@
   --muted: #b7bfcc;
   --border: #363d4a;
   --chosen-border: var(--border);
+  --border-image: none;
+  --gradient-angle: 0deg;
   --accent: #4ea1ff;
   --accent-strong: #1e90ff;
   --chip-bg: #293141;
@@ -20,6 +22,12 @@
   color-scheme: dark;
 }
 
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 body.light-theme {
   --bg: #f3f5f8;
   --surface: #ffffff;
@@ -28,6 +36,8 @@ body.light-theme {
   --muted: #5f6b7a;
   --border: #aeb8c5;
   --chosen-border: var(--border);
+  --border-image: none;
+  --gradient-angle: 0deg;
   --accent: #006fd6;
   --accent-strong: #005fc0;
   --chip-bg: #eef4fb;
@@ -206,6 +216,15 @@ ul {
 @keyframes button-shine {
   to {
     transform: translateX(140%);
+  }
+}
+
+@keyframes spin-border {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
   }
 }
 
@@ -889,6 +908,64 @@ ul {
     transform 0.2s ease;
 }
 
+.border-color-picker button.gradient-swatch {
+  background: conic-gradient(from 0deg, #4ea1ff, #8b5cf6, #ec4899, #4ea1ff);
+  border-color: #ffffff;
+}
+
+body.gradient-border .hero,
+body.gradient-border .section,
+body.gradient-border .footer,
+body.gradient-border .nav-menu a,
+body.gradient-border .border-color-picker,
+body.gradient-border .skill-group,
+body.gradient-border .experience-item,
+body.gradient-border .project-card,
+body.gradient-border .timeline-item,
+body.gradient-border .contact-list li,
+body.gradient-border .skill,
+body.gradient-border .interest-list span,
+body.gradient-border .portfolio-page .skills-list li,
+body.gradient-border .portfolio-page .carousel,
+body.gradient-border .portfolio-page .portfolio-card,
+body.gradient-border .case-study-card,
+body.gradient-border .case-study-link {
+  border-color: transparent;
+  position: relative;
+}
+
+body.gradient-border .hero::before,
+body.gradient-border .section::before,
+body.gradient-border .footer::before,
+body.gradient-border .nav-menu a::before,
+body.gradient-border .border-color-picker::before,
+body.gradient-border .skill-group::before,
+body.gradient-border .experience-item::before,
+body.gradient-border .project-card::before,
+body.gradient-border .timeline-item::before,
+body.gradient-border .contact-list li::before,
+body.gradient-border .skill::before,
+body.gradient-border .interest-list span::before,
+body.gradient-border .portfolio-page .skills-list li::before,
+body.gradient-border .portfolio-page .carousel::before,
+body.gradient-border .portfolio-page .portfolio-card::before,
+body.gradient-border .case-study-card::before,
+body.gradient-border .case-study-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--gradient-angle), #4ea1ff, #8b5cf6, #ec4899, #4ea1ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin-border 2.5s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .border-color-picker button:hover,
 .border-color-picker button:focus {
   transform: scale(1.12);
@@ -915,7 +992,10 @@ ul {
 .portfolio-page .portfolio-card,
 .portfolio-page .portfolio-card-image,
 .portfolio-page .project-meta li,
-.portfolio-page .tech-stack {
+.portfolio-page .tech-stack,
+.case-study-card,
+.case-study-image,
+.case-study-link {
   border-color: var(--chosen-border);
 }
 
@@ -1026,6 +1106,94 @@ ul {
 
 .portfolio-page .portfolio-projects.featured-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.portfolio-page .case-study-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.portfolio-page .case-study-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: 1.25rem;
+  align-items: center;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(78, 161, 255, 0.055), transparent 45%),
+    var(--surface-strong);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+}
+
+.portfolio-page .case-study-content {
+  min-width: 0;
+}
+
+.portfolio-page .case-study-kicker {
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portfolio-page .case-study-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.portfolio-page .case-study-points div {
+  min-width: 0;
+}
+
+.portfolio-page .case-study-points dt {
+  margin-bottom: 0.2rem;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.portfolio-page .case-study-points dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.portfolio-page .case-study-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.38rem 0.7rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.portfolio-page .case-study-link:hover,
+.portfolio-page .case-study-link:focus {
+  color: #ffffff;
+  background: var(--accent-strong);
+  text-decoration: none;
+}
+
+.portfolio-page .case-study-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  cursor: zoom-in;
 }
 
 .portfolio-page .portfolio-card {
@@ -1183,6 +1351,10 @@ ul {
   .portfolio-page .skills-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .portfolio-page .case-study-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 680px) {
@@ -1196,7 +1368,8 @@ ul {
 
   .portfolio-page .portfolio-projects,
   .portfolio-page .portfolio-projects.featured-grid,
-  .portfolio-page .skills-list {
+  .portfolio-page .skills-list,
+  .portfolio-page .case-study-points {
     grid-template-columns: 1fr;
   }
 
@@ -1245,8 +1418,28 @@ ul {
     display: none;
   }
 
+  .portfolio-page .case-study-card {
+    padding: 0.55rem 0;
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    border-radius: 0;
+    box-shadow: none;
+    background: #ffffff;
+    break-inside: avoid;
+  }
+
+  .portfolio-page .case-study-image {
+    display: none;
+  }
+
+  .portfolio-page .case-study-points {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
   .portfolio-page .project-meta li,
-  .portfolio-page .tech-stack {
+  .portfolio-page .tech-stack,
+  .portfolio-page .case-study-link {
     border-color: #bbbbbb;
     background: #ffffff;
     color: #000000;

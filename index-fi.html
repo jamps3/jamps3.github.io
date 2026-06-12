@@ -21,14 +21,6 @@
     </button>
   </div>
 
-  <div class="border-color-picker" aria-label="Valitse reunuksen vari">
-    <button type="button" data-border-color="#4ea1ff" style="--swatch-color: #4ea1ff" aria-label="Sininen reunus"></button>
-    <button type="button" data-border-color="#48d17a" style="--swatch-color: #48d17a" aria-label="Vihrea reunus"></button>
-    <button type="button" data-border-color="#ffd166" style="--swatch-color: #ffd166" aria-label="Kultainen reunus"></button>
-    <button type="button" data-border-color="#ff7ab6" style="--swatch-color: #ff7ab6" aria-label="Pinkki reunus"></button>
-    <button type="button" data-border-color="" style="--swatch-color: var(--border)" aria-label="Oletusreunus"></button>
-  </div>
-
   <main class="cv-container">
     <nav class="nav-menu">
       <a href="portfolio.html">Portfolio</a>
@@ -569,27 +561,6 @@
     if (savedTheme === "light") {
       document.body.classList.add("light-theme");
     }
-
-    function setBorderColor(color) {
-      document.documentElement.style.setProperty("--chosen-border", color || "var(--border)");
-      document.body.style.setProperty("--chosen-border", color || "var(--border)");
-      document.querySelectorAll(".border-color-picker button").forEach((button) => {
-        const isActive = button.dataset.borderColor === color;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", isActive ? "true" : "false");
-      });
-    }
-
-    const savedBorderColor = localStorage.getItem("borderColor") || "";
-    setBorderColor(savedBorderColor);
-
-    document.querySelectorAll(".border-color-picker button").forEach((button) => {
-      button.addEventListener("click", () => {
-        const color = button.dataset.borderColor;
-        setBorderColor(color);
-        localStorage.setItem("borderColor", color);
-      });
-    });
 
     function toggleTheme() {
       document.body.classList.toggle("light-theme");
