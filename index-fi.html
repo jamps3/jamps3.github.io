@@ -43,8 +43,8 @@
           <p class="eyebrow">Curriculum Vitae</p>
           <h1>Jan-Erik Labbas</h1>
           <p class="subtitle">
-            Python / web / Linux -kehittäjä, jolla on taustaa elektroniikasta,
-            asiakaspalvelusta ja käytännön ICT-ratkaisuista
+            Python- ja Android-kehittäjä, joka keskittyy käytännön työkaluihin,
+            automaatioon, Linuxiin ja elektroniikkaa sivuavaan ohjelmistokehitykseen
           </p>
 
           <ul class="contact-list" aria-label="Yhteystiedot">
@@ -74,6 +74,17 @@
         </div>
       </div>
     </header>
+
+    <section class="section">
+      <h2>Sopivimmat roolit</h2>
+      <ul class="clean-list">
+        <li>Python-työpöytätyökalut, automaatio, skriptit ja käytännön hyötysovellukset</li>
+        <li>Android/Kotlin-sovellukset, Jetpack Compose -kokeilut ja paikallisesti toimivat mobiilityökalut</li>
+        <li>Linux, web-ylläpito, CMS-päivitykset, skriptaus ja tekninen ongelmanratkaisu</li>
+        <li>Elektroniikkaa ja ohjelmistoja yhdistävät roolit, joissa tarvitaan laite-, diagnostiikka-, korjaus- tai sulautettuja järjestelmiä sivuavaa osaamista</li>
+        <li>Junior- tai mid-tason ohjelmistokehittäjän tai teknisen asiantuntijan roolit, joissa käytännönläheinen ongelmanratkaisu on tärkeää</li>
+      </ul>
+    </section>
 
     <section class="section">
       <h2>Ammatillinen profiili</h2>
@@ -307,7 +318,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/SpiralFM">
+            <a href="https://github.com/jamps3/SpiralFM" data-private-repository>
               SpiralFM (Yksityinen)
             </a>
           </h3>
@@ -321,7 +332,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/LoitsuFind">
+            <a href="https://github.com/jamps3/LoitsuFind" data-private-repository>
               LoitsuFind (Yksityinen)
             </a>
           </h3>
@@ -404,7 +415,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/Kuitvakka">
+            <a href="https://github.com/jamps3/Kuitvakka" data-private-repository>
               Kuitvakka (Yksityinen)
             </a>
           </h3>
@@ -418,7 +429,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/Soumari">
+            <a href="https://github.com/jamps3/Soumari" data-private-repository>
               Soumari (Yksityinen)
             </a>
           </h3>
@@ -433,7 +444,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/Loitsio">
+            <a href="https://github.com/jamps3/Loitsio" data-private-repository>
               Loitsio (Yksityinen)
             </a>
           </h3>
@@ -448,7 +459,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/PetzyTop">
+            <a href="https://github.com/jamps3/PetzyTop" data-private-repository>
               PetzyTop (Yksityinen)
             </a>
           </h3>
@@ -568,6 +579,13 @@
       const isLight = document.body.classList.contains("light-theme");
       localStorage.setItem("theme", isLight ? "light" : "dark");
     }
+
+    document.querySelectorAll("[data-private-repository]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        alert("Tämä on yksityinen repositorio, joten GitHub-linkki ei ole julkisesti saatavilla.");
+      });
+    });
   </script>
 </body>
 </html>

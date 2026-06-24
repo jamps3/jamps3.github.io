@@ -854,6 +854,7 @@ ul {
 .portfolio-page .carousel-viewport {
   overflow: hidden;
   width: 100%;
+  border-radius: 21px 21px 0 0;
 }
 
 .portfolio-page .carousel-slides {
@@ -917,20 +918,17 @@ body.gradient-border .hero,
 body.gradient-border .section,
 body.gradient-border .footer,
 body.gradient-border .nav-menu a,
-body.gradient-border .border-color-picker,
 body.gradient-border .skill-group,
 body.gradient-border .experience-item,
 body.gradient-border .project-card,
 body.gradient-border .timeline-item,
 body.gradient-border .contact-list li,
-body.gradient-border .skill,
-body.gradient-border .interest-list span,
-body.gradient-border .portfolio-page .skills-list li,
 body.gradient-border .portfolio-page .carousel,
 body.gradient-border .portfolio-page .portfolio-card,
 body.gradient-border .case-study-card,
 body.gradient-border .case-study-link {
   border-color: transparent;
+  isolation: isolate;
   position: relative;
 }
 
@@ -938,15 +936,11 @@ body.gradient-border .hero::before,
 body.gradient-border .section::before,
 body.gradient-border .footer::before,
 body.gradient-border .nav-menu a::before,
-body.gradient-border .border-color-picker::before,
 body.gradient-border .skill-group::before,
 body.gradient-border .experience-item::before,
 body.gradient-border .project-card::before,
 body.gradient-border .timeline-item::before,
 body.gradient-border .contact-list li::before,
-body.gradient-border .skill::before,
-body.gradient-border .interest-list span::before,
-body.gradient-border .portfolio-page .skills-list li::before,
 body.gradient-border .portfolio-page .carousel::before,
 body.gradient-border .portfolio-page .portfolio-card::before,
 body.gradient-border .case-study-card::before,
@@ -963,7 +957,7 @@ body.gradient-border .case-study-link::before {
   mask-composite: exclude;
   animation: spin-border 2.5s linear infinite;
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
 }
 
 .border-color-picker button:hover,
@@ -977,6 +971,15 @@ body.gradient-border .case-study-link::before {
   box-shadow:
     0 0 0 2px var(--bg),
     0 0 0 4px var(--swatch-color),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.16);
+}
+
+.border-color-picker button.gradient-swatch.active,
+.border-color-picker button.gradient-swatch[aria-pressed="true"] {
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px #8b5cf6,
+    0 0 18px rgba(139, 92, 246, 0.55),
     inset 0 0 0 2px rgba(0, 0, 0, 0.16);
 }
 

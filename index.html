@@ -43,7 +43,8 @@
           <p class="eyebrow">Curriculum Vitae</p>
           <h1>Jan-Erik Labbas</h1>
           <p class="subtitle">
-            Python / Web / Linux Developer with electronics and customer-service background
+            Python & Android Developer focused on practical tools, automation,
+            Linux, and electronics-adjacent software
           </p>
 
           <ul class="contact-list" aria-label="Contact information">
@@ -73,6 +74,17 @@
         </div>
       </div>
     </header>
+
+    <section class="section">
+      <h2>Best Fit</h2>
+      <ul class="clean-list">
+        <li>Python desktop tools, automation, scripting, and practical utility applications</li>
+        <li>Android/Kotlin apps, Jetpack Compose experiments, and local-first mobile tools</li>
+        <li>Linux, web maintenance, CMS updates, scripting, and technical troubleshooting</li>
+        <li>Electronics/software hybrid roles involving devices, diagnostics, repair, or embedded-adjacent work</li>
+        <li>Junior to mid-level software developer or technical specialist roles with hands-on problem solving</li>
+      </ul>
+    </section>
 
     <section class="section">
       <h2>Professional Summary</h2>
@@ -307,7 +319,7 @@
         </article>
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/SpiralFM">
+            <a href="https://github.com/jamps3/SpiralFM" data-private-repository>
               SpiralFM (Private)
             </a>
           </h3>
@@ -321,7 +333,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/LoitsuFind">
+            <a href="https://github.com/jamps3/LoitsuFind" data-private-repository>
               LoitsuFind (Private)
             </a>
           </h3>
@@ -402,7 +414,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/Kuitvakka">
+            <a href="https://github.com/jamps3/Kuitvakka" data-private-repository>
               Kuitvakka (Private)
             </a>
           </h3>
@@ -416,7 +428,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/Soumari">
+            <a href="https://github.com/jamps3/Soumari" data-private-repository>
               Soumari (Private)
             </a>
           </h3>
@@ -430,7 +442,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/Loitsio">
+            <a href="https://github.com/jamps3/Loitsio" data-private-repository>
               Loitsio (Private)
             </a>
           </h3>
@@ -444,7 +456,7 @@
 
         <article class="project-card">
           <h3>
-            <a href="https://github.com/jamps3/PetzyTop">
+            <a href="https://github.com/jamps3/PetzyTop" data-private-repository>
               PetzyTop (Private)
             </a>
           </h3>
@@ -571,6 +583,13 @@
       const isLight = document.body.classList.contains("light-theme");
       localStorage.setItem("theme", isLight ? "light" : "dark");
     }
+
+    document.querySelectorAll("[data-private-repository]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        alert("This is a private repository, so the GitHub link is not available publicly.");
+      });
+    });
   </script>
 </body>
 </html>
