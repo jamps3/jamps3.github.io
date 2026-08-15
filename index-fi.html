@@ -16,10 +16,28 @@
     <button class="action-button" type="button" onclick="toggleTheme()">
       Vaihda teema
     </button>
-    <button class="action-button secondary" type="button" onclick="window.print()">
+    <button class="action-button secondary" type="button" onclick="openPrintOptions()">
       Tulosta / PDF
     </button>
   </div>
+
+  <dialog class="print-options-dialog" id="print-options-dialog" aria-labelledby="print-options-title">
+    <form method="dialog">
+      <h2 id="print-options-title">Valitse tulostettava CV</h2>
+      <p>Yhden sivun versio tiivistää CV:n yhdelle A4-sivulle. Pitkä versio tulostaa koko sivun.</p>
+      <div class="print-options-actions">
+        <button class="action-button" type="button" onclick="printCv('one-page')">
+          1 sivu
+        </button>
+        <button class="action-button secondary" type="button" onclick="printCv('long')">
+          Pitkä versio
+        </button>
+        <button class="action-button secondary" value="cancel">
+          Peruuta
+        </button>
+      </div>
+    </form>
+  </dialog>
 
   <main class="cv-container">
     <nav class="nav-menu">
@@ -75,7 +93,7 @@
       </div>
     </header>
 
-    <section class="section">
+    <section class="section cv-section-best-fit">
       <h2>Sopivimmat roolit</h2>
       <ul class="clean-list">
         <li>Python-työpöytätyökalut, automaatio, skriptit ja käytännön hyötysovellukset</li>
@@ -86,7 +104,7 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-summary">
       <h2>Ammatillinen profiili</h2>
       <p>
         Olen käytännönläheinen ja yksityiskohtiin tarkasti suhtautuva ICT-osaaja,
@@ -102,7 +120,7 @@
       </p>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-strengths">
       <h2>Keskeiset vahvuudet</h2>
       <ul class="clean-list">
         <li>Python-ohjelmointi, automaatio, skriptit, backend-kehitys ja GUI-sovellukset</li>
@@ -114,7 +132,7 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-skills">
       <h2>Tekniset taidot</h2>
 
       <div class="skill-groups">
@@ -179,7 +197,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-experience">
       <h2>Työkokemus</h2>
 
       <article class="experience-item">
@@ -266,7 +284,7 @@
       </article>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-projects">
       <h2>Valikoidut projektit</h2>
 
       <div class="project-grid">
@@ -474,7 +492,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-education">
       <h2>Koulutus</h2>
 
       <div class="timeline">
@@ -520,7 +538,7 @@
       </div>
     </section>
 
-    <section class="section two-column">
+    <section class="section two-column cv-section-details">
       <div>
         <h2>Kielet</h2>
         <ul class="info-list">
@@ -543,7 +561,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-interests">
       <h2>Harrastukset ja kiinnostuksen kohteet</h2>
       <div class="interest-list">
         <span>Elektroniikka: rakentaminen, juottaminen, korjaaminen ja ohjelmointi</span>
@@ -580,10 +598,71 @@
       localStorage.setItem("theme", isLight ? "light" : "dark");
     }
 
+    function openPrintOptions() {
+      const dialog = document.getElementById("print-options-dialog");
+
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+        return;
+      }
+
+      printCv("long");
+    }
+
+    function printCv(mode) {
+      const dialog = document.getElementById("print-options-dialog");
+      document.body.classList.toggle("print-one-page", mode === "one-page");
+
+      if (dialog.open) {
+        dialog.close();
+      }
+
+      window.print();
+    }
+
+    window.addEventListener("afterprint", () => {
+      document.body.classList.remove("print-one-page");
+    });
+
+    const privateRepositoryMessage = "Tämä on yksityinen repositorio, joten GitHub-linkki ei ole julkisesti saatavilla.";
+    let privateRepositoryToastTimeout;
+
+    function showPrivateRepositoryToast() {
+      let toast = document.getElementById("private-repository-toast");
+
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "private-repository-toast";
+        toast.className = "private-repository-toast";
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = `
+          <strong>Yksityinen repositorio</strong>
+          <p>${privateRepositoryMessage}</p>
+          <button type="button" aria-label="Sulje yksityisen repositoryn viesti">&times;</button>
+        `;
+        document.body.appendChild(toast);
+        toast.querySelector("button").addEventListener("click", () => {
+          toast.classList.remove("visible");
+          window.clearTimeout(privateRepositoryToastTimeout);
+        });
+      }
+
+      window.clearTimeout(privateRepositoryToastTimeout);
+      toast.classList.add("visible");
+      privateRepositoryToastTimeout = window.setTimeout(() => {
+        toast.classList.remove("visible");
+      }, 4500);
+    }
+
     document.querySelectorAll("[data-private-repository]").forEach((link) => {
+      link.setAttribute("aria-disabled", "true");
+      link.setAttribute("title", privateRepositoryMessage);
+      link.setAttribute("aria-label", `${link.textContent.trim()} - yksityinen repositorio. ${privateRepositoryMessage}`);
+
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        alert("Tämä on yksityinen repositorio, joten GitHub-linkki ei ole julkisesti saatavilla.");
+        showPrivateRepositoryToast();
       });
     });
   </script>

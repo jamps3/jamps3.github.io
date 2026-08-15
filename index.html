@@ -16,10 +16,28 @@
     <button class="action-button" type="button" onclick="toggleTheme()">
       Toggle Theme
     </button>
-    <button class="action-button secondary" type="button" onclick="window.print()">
+    <button class="action-button secondary" type="button" onclick="openPrintOptions()">
       Print / PDF
     </button>
   </div>
+
+  <dialog class="print-options-dialog" id="print-options-dialog" aria-labelledby="print-options-title">
+    <form method="dialog">
+      <h2 id="print-options-title">Choose CV Version</h2>
+      <p>The one-page version condenses the CV onto one A4 page. The long version prints the full page.</p>
+      <div class="print-options-actions">
+        <button class="action-button" type="button" onclick="printCv('one-page')">
+          1 Page
+        </button>
+        <button class="action-button secondary" type="button" onclick="printCv('long')">
+          Long Version
+        </button>
+        <button class="action-button secondary" value="cancel">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </dialog>
 
   <main class="cv-container">
     <nav class="nav-menu">
@@ -75,7 +93,7 @@
       </div>
     </header>
 
-    <section class="section">
+    <section class="section cv-section-best-fit">
       <h2>Best Fit</h2>
       <ul class="clean-list">
         <li>Python desktop tools, automation, scripting, and practical utility applications</li>
@@ -86,7 +104,7 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-summary">
       <h2>Professional Summary</h2>
       <p>
         Practical and detail-oriented ICT professional with experience in Python, Linux,
@@ -100,7 +118,7 @@
       </p>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-strengths">
       <h2>Key Strengths</h2>
       <ul class="clean-list">
         <li>Python programming, automation, scripting, backend development, and GUI applications</li>
@@ -112,7 +130,7 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-skills">
       <h2>Technical Skills</h2>
 
       <div class="skill-groups">
@@ -177,7 +195,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-experience">
       <h2>Work Experience</h2>
 
       <article class="experience-item">
@@ -264,7 +282,7 @@
       </article>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-projects">
       <h2>Selected Projects</h2>
 
       <div class="project-grid">
@@ -479,7 +497,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-education">
       <h2>Education</h2>
 
       <div class="timeline">
@@ -524,7 +542,7 @@
       </div>
     </section>
 
-    <section class="section two-column">
+    <section class="section two-column cv-section-details">
       <div>
         <h2>Languages</h2>
         <ul class="info-list">
@@ -547,7 +565,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section cv-section-interests">
       <h2>Hobbies and Interests</h2>
       <div class="interest-list">
         <span>Electronics: building, soldering, repairing, programming</span>
@@ -584,10 +602,71 @@
       localStorage.setItem("theme", isLight ? "light" : "dark");
     }
 
+    function openPrintOptions() {
+      const dialog = document.getElementById("print-options-dialog");
+
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+        return;
+      }
+
+      printCv("long");
+    }
+
+    function printCv(mode) {
+      const dialog = document.getElementById("print-options-dialog");
+      document.body.classList.toggle("print-one-page", mode === "one-page");
+
+      if (dialog.open) {
+        dialog.close();
+      }
+
+      window.print();
+    }
+
+    window.addEventListener("afterprint", () => {
+      document.body.classList.remove("print-one-page");
+    });
+
+    const privateRepositoryMessage = "This is a private repository, so the GitHub link is not available publicly.";
+    let privateRepositoryToastTimeout;
+
+    function showPrivateRepositoryToast() {
+      let toast = document.getElementById("private-repository-toast");
+
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "private-repository-toast";
+        toast.className = "private-repository-toast";
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = `
+          <strong>Private repository</strong>
+          <p>${privateRepositoryMessage}</p>
+          <button type="button" aria-label="Dismiss private repository message">&times;</button>
+        `;
+        document.body.appendChild(toast);
+        toast.querySelector("button").addEventListener("click", () => {
+          toast.classList.remove("visible");
+          window.clearTimeout(privateRepositoryToastTimeout);
+        });
+      }
+
+      window.clearTimeout(privateRepositoryToastTimeout);
+      toast.classList.add("visible");
+      privateRepositoryToastTimeout = window.setTimeout(() => {
+        toast.classList.remove("visible");
+      }, 4500);
+    }
+
     document.querySelectorAll("[data-private-repository]").forEach((link) => {
+      link.setAttribute("aria-disabled", "true");
+      link.setAttribute("title", privateRepositoryMessage);
+      link.setAttribute("aria-label", `${link.textContent.trim()} - private repository. ${privateRepositoryMessage}`);
+
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        alert("This is a private repository, so the GitHub link is not available publicly.");
+        showPrivateRepositoryToast();
       });
     });
   </script>

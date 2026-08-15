@@ -1010,10 +1010,45 @@
       }
     });
 
+    const privateRepositoryMessage = "This is a private repository, so the GitHub link is not available publicly.";
+    let privateRepositoryToastTimeout;
+
+    function showPrivateRepositoryToast() {
+      let toast = document.getElementById("private-repository-toast");
+
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "private-repository-toast";
+        toast.className = "private-repository-toast";
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = `
+          <strong>Private repository</strong>
+          <p>${privateRepositoryMessage}</p>
+          <button type="button" aria-label="Dismiss private repository message">&times;</button>
+        `;
+        document.body.appendChild(toast);
+        toast.querySelector("button").addEventListener("click", () => {
+          toast.classList.remove("visible");
+          window.clearTimeout(privateRepositoryToastTimeout);
+        });
+      }
+
+      window.clearTimeout(privateRepositoryToastTimeout);
+      toast.classList.add("visible");
+      privateRepositoryToastTimeout = window.setTimeout(() => {
+        toast.classList.remove("visible");
+      }, 4500);
+    }
+
     document.querySelectorAll("[data-private-repository]").forEach((link) => {
+      link.setAttribute("aria-disabled", "true");
+      link.setAttribute("title", privateRepositoryMessage);
+      link.setAttribute("aria-label", `${link.textContent.trim()} - private repository. ${privateRepositoryMessage}`);
+
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        alert("This is a private repository, so the GitHub link is not available publicly.");
+        showPrivateRepositoryToast();
       });
     });
   </script>

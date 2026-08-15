@@ -80,6 +80,89 @@ a:focus {
   text-decoration: underline;
 }
 
+a[data-private-repository] {
+  cursor: not-allowed;
+}
+
+a[data-private-repository]::after {
+  content: "Private";
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.45rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1.4;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+html[lang="fi"] a[data-private-repository]::after {
+  content: "Yksityinen";
+}
+
+.private-repository-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1200;
+  width: min(25rem, calc(100vw - 2rem));
+  padding: 1rem 3rem 1rem 1rem;
+  border: 1px solid var(--chosen-border);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(78, 161, 255, 0.12), transparent 55%),
+    var(--surface-strong);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(0.8rem);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.private-repository-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.private-repository-toast strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.private-repository-toast p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.private-repository-toast button {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+}
+
+.private-repository-toast button:hover,
+.private-repository-toast button:focus {
+  border-color: var(--accent);
+  color: #ffffff;
+  background: var(--accent-strong);
+}
+
 button,
 a {
   outline-offset: 3px;
@@ -232,6 +315,36 @@ ul {
   color: var(--text);
   background: var(--surface);
   border-color: var(--chosen-border);
+}
+
+.print-options-dialog {
+  width: min(34rem, calc(100vw - 2rem));
+  padding: 1.4rem;
+  border: 1px solid var(--chosen-border);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.print-options-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(4px);
+}
+
+.print-options-dialog h2 {
+  margin-bottom: 0.55rem;
+}
+
+.print-options-dialog p {
+  color: var(--muted);
+}
+
+.print-options-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
 }
 
 .hero,
@@ -646,6 +759,11 @@ ul {
     margin: 1.4cm;
   }
 
+  @page onePageCv {
+    size: A4;
+    margin: 0.55cm;
+  }
+
   body {
     padding: 0;
     background: #ffffff;
@@ -659,6 +777,7 @@ ul {
   }
 
   .page-actions,
+  .print-options-dialog,
   .border-color-picker {
     display: none;
   }
@@ -766,6 +885,152 @@ ul {
   }
 
   .footer {
+    display: none;
+  }
+
+  body.print-one-page {
+    page: onePageCv;
+    font-size: 7.6pt;
+    line-height: 1.18;
+  }
+
+  body.print-one-page .cv-container {
+    width: 100%;
+    max-width: none;
+  }
+
+  body.print-one-page .nav-menu,
+  body.print-one-page .profile-image,
+  body.print-one-page .cv-section-projects,
+  body.print-one-page .cv-section-details,
+  body.print-one-page .cv-section-interests,
+  body.print-one-page .footer {
+    display: none;
+  }
+
+  body.print-one-page .hero,
+  body.print-one-page .section {
+    margin-bottom: 0.24rem;
+  }
+
+  body.print-one-page .profile {
+    display: block;
+  }
+
+  body.print-one-page .eyebrow {
+    margin-bottom: 0.05rem;
+    font-size: 6.8pt;
+  }
+
+  body.print-one-page h1 {
+    margin-bottom: 0.08rem;
+    font-size: 16pt;
+    letter-spacing: 0;
+  }
+
+  body.print-one-page h2 {
+    margin: 0.1rem 0 0.16rem;
+    padding-bottom: 0.05rem;
+    font-size: 9.2pt;
+  }
+
+  body.print-one-page h3 {
+    margin-bottom: 0.05rem;
+    font-size: 7.9pt;
+  }
+
+  body.print-one-page p,
+  body.print-one-page ul {
+    margin-bottom: 0.14rem;
+  }
+
+  body.print-one-page .subtitle {
+    max-width: none;
+    margin-bottom: 0.16rem;
+    font-size: 8.1pt;
+  }
+
+  body.print-one-page .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.08rem 0.35rem;
+    font-size: 7.2pt;
+  }
+
+  body.print-one-page .contact-list li {
+    display: inline;
+  }
+
+  body.print-one-page .contact-list li::after {
+    content: " |";
+  }
+
+  body.print-one-page .contact-list li:last-child::after {
+    content: "";
+  }
+
+  body.print-one-page .contact-label {
+    font-size: 6.4pt;
+  }
+
+  body.print-one-page .clean-list,
+  body.print-one-page .info-list,
+  body.print-one-page .experience-item ul {
+    padding-left: 0.75rem;
+  }
+
+  body.print-one-page .clean-list li,
+  body.print-one-page .info-list li,
+  body.print-one-page .experience-item li {
+    margin-bottom: 0.02rem;
+  }
+
+  body.print-one-page .skill-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.18rem 0.45rem;
+  }
+
+  body.print-one-page .skill-group,
+  body.print-one-page .experience-item,
+  body.print-one-page .timeline-item {
+    padding: 0.12rem 0;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  body.print-one-page .skills {
+    gap: 0.08rem 0.18rem;
+  }
+
+  body.print-one-page .skill {
+    min-height: 0;
+    padding: 0;
+    border: none;
+    font-size: 6.7pt;
+  }
+
+  body.print-one-page .skill::before {
+    width: 0.28rem;
+    height: 0.28rem;
+    margin-right: 0.14rem;
+  }
+
+  body.print-one-page .meta {
+    margin-bottom: 0.04rem;
+    font-size: 7.1pt;
+  }
+
+  body.print-one-page .experience-item:nth-of-type(n+5),
+  body.print-one-page .experience-item li:nth-child(n+3),
+  body.print-one-page .timeline-item:nth-child(n+6) {
+    display: none;
+  }
+
+  body.print-one-page .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.08rem 0.45rem;
+  }
+
+  body.print-one-page .timeline-item p:not(.meta) {
     display: none;
   }
 }
