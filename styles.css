@@ -900,7 +900,6 @@ ul {
   }
 
   body.print-one-page .nav-menu,
-  body.print-one-page .profile-image,
   body.print-one-page .cv-section-projects,
   body.print-one-page .cv-section-details,
   body.print-one-page .cv-section-interests,
@@ -914,7 +913,16 @@ ul {
   }
 
   body.print-one-page .profile {
+    display: flex;
+    gap: 0.45rem;
+    align-items: flex-start;
+  }
+
+  body.print-one-page .profile-image {
     display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 7px;
   }
 
   body.print-one-page .eyebrow {
